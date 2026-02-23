@@ -1,0 +1,3666 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Maryam Birthday Surprise</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=Great+Vibes&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 0.2;
+          transform: scale(1);
+        }
+        50% {
+          opacity: 0.8;
+          transform: scale(1.2);
+        }
+      }
+
+      @keyframes hat-fly {
+        0% {
+          transform: translate(-80px, -8px) rotate(-18deg) scale(0.95);
+        }
+        20% {
+          transform: translate(-50px, -38px) rotate(-10deg) scale(1);
+        }
+        50% {
+          transform: translate(0, -55px) rotate(0deg) scale(1.05);
+        }
+        80% {
+          transform: translate(55px, -25px) rotate(8deg) scale(1.02);
+        }
+        100% {
+          transform: translate(80px, -10px) rotate(12deg) scale(1);
+        }
+      }
+
+      .animate-hat-fly {
+        animation: hat-fly 1.4s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+      }
+
+      @keyframes azkeel-walk {
+        0% {
+          transform: translateX(0) translateY(0);
+        }
+        40% {
+          transform: translateX(30px) translateY(-2px);
+        }
+        70% {
+          transform: translateX(55px) translateY(-3px);
+        }
+        100% {
+          transform: translateX(70px) translateY(-1px);
+        }
+      }
+
+      @keyframes maryam-step {
+        0% {
+          transform: translateX(0) translateY(0);
+        }
+        40% {
+          transform: translateX(-10px) translateY(-1px);
+        }
+        70% {
+          transform: translateX(-18px) translateY(-2px);
+        }
+        100% {
+          transform: translateX(-24px) translateY(-1px);
+        }
+      }
+
+      .animate-azkeel-walk {
+        animation: azkeel-walk 1.4s ease-in-out forwards;
+      }
+
+      .animate-maryam-step {
+        animation: maryam-step 1.4s ease-in-out forwards;
+      }
+
+      @keyframes eye-blink {
+        0%,
+        35%,
+        100% {
+          transform: scaleY(1);
+        }
+        40%,
+        45% {
+          transform: scaleY(0.1);
+        }
+        50%,
+        95% {
+          transform: scaleY(1);
+        }
+      }
+
+      .eye-blink {
+        transform-box: fill-box;
+        transform-origin: center;
+        animation: eye-blink 3.2s ease-in-out infinite;
+      }
+
+      @keyframes candle-flicker {
+        0%,
+        100% {
+          transform: scale(1, 1);
+          opacity: 0.9;
+        }
+        50% {
+          transform: scale(0.95, 1.05);
+          opacity: 1;
+        }
+      }
+
+      @keyframes candle-out {
+        0% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        40% {
+          transform: translateY(-6px) scale(1.18);
+          opacity: 0.6;
+        }
+        100% {
+          transform: translateY(-12px) scale(0.8);
+          opacity: 0;
+        }
+      }
+
+      .animate-flame-flicker {
+        animation: candle-flicker 0.7s infinite alternate ease-in-out;
+      }
+
+      .animate-flame-out {
+        animation: candle-out 0.9s forwards;
+      }
+
+      @keyframes smoke-rise {
+        0% {
+          transform: translate(calc(-50% + var(--dx, 0px)), 10px) scale(1.1);
+          opacity: 1;
+        }
+        35% {
+          transform: translate(calc(-50% + var(--dx, 0px)), -40px) scale(1.25);
+          opacity: 1;
+        }
+        70% {
+          transform: translate(calc(-50% + var(--dx, 0px)), -120px) scale(1.5);
+          opacity: 0.9;
+        }
+        100% {
+          transform: translate(calc(-50% + var(--dx, 0px)), -220px) scale(1.7);
+          opacity: 0;
+        }
+      }
+
+      .smoke-dot {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        border-radius: 9999px;
+        background: radial-gradient(
+          circle,
+          rgba(148, 163, 184, 1),
+          rgba(148, 163, 184, 0.4)
+        );
+        filter: blur(1px);
+        box-shadow: 0 0 40px rgba(15, 23, 42, 0.7);
+        z-index: 20;
+      }
+
+      .animate-smoke {
+        animation: smoke-rise 3s ease-out forwards;
+      }
+
+      .smoke-bomb {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        border-radius: 9999px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 18px 30px rgba(15, 23, 42, 0.35);
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .smoke-bomb:hover {
+        transform: translateY(-4px) scale(1.05);
+        box-shadow: 0 26px 40px rgba(15, 23, 42, 0.45);
+      }
+
+      .smoke-bomb-label {
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: #f9fafb;
+        text-shadow: 0 2px 4px rgba(15, 23, 42, 0.6);
+      }
+
+      .smoke-trail {
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 320px;
+        pointer-events: none;
+        z-index: 20;
+      }
+
+      @keyframes confetti-fall {
+        0% {
+          transform: translateY(-140%) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(140%) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .confetti-piece {
+        position: absolute;
+        width: 8px;
+        height: 14px;
+        border-radius: 9999px;
+        opacity: 0.9;
+      }
+
+      @keyframes petal-throw {
+        0% {
+          transform: translate3d(0, 0, 0) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        50% {
+          transform: translate3d(80px, -40px, 0) rotate(30deg);
+        }
+        100% {
+          transform: translate3d(150px, 40px, 0) rotate(80deg);
+          opacity: 0;
+        }
+      }
+
+      @keyframes blast-out {
+        0% {
+          transform: translate(0, 0) scale(0.5);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(var(--tx), var(--ty)) scale(1) rotate(720deg);
+          opacity: 0;
+        }
+      }
+
+      .blast-particle {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        animation: blast-out 5s ease-out forwards;
+      }
+
+      @keyframes bloom {
+        0% {
+          transform: scale(0);
+          opacity: 0;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-bloom {
+        animation: bloom 2s ease-out forwards;
+      }
+      @keyframes rose-stem-draw {
+        0% {
+          stroke-dashoffset: 100;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+      .rose-stem {
+        stroke-dasharray: 100;
+        stroke-dashoffset: 100;
+        animation: rose-stem-draw 2.5s ease-out forwards;
+      }
+      @keyframes rose-part-pop {
+        0% {
+          transform: scale(0.2);
+          opacity: 0;
+        }
+        60% {
+          transform: scale(1.05);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      .rose-leaf,
+      .rose-petal {
+        transform-origin: 50% 50%;
+        opacity: 0;
+        transform: scale(0.2);
+        animation: rose-part-pop 1.4s ease-out forwards;
+        animation-fill-mode: forwards;
+      }
+      .rose-leaf-left {
+        animation-delay: 1s;
+      }
+      .rose-leaf-right {
+        animation-delay: 1.3s;
+      }
+      .rose-petal-outer {
+        animation-delay: 1.6s;
+      }
+      .rose-petal-middle {
+        animation-delay: 1.9s;
+      }
+      .rose-petal-inner {
+        animation-delay: 2.2s;
+      }
+      @keyframes fly-in {
+        0% {
+          transform: translate(100vw, -50vh) scale(0.5);
+          opacity: 0;
+        }
+        100% {
+          transform: translate(0, 0) scale(1);
+          opacity: 1;
+        }
+      }
+      .animate-fly-in {
+        animation: fly-in 1.5s ease-in forwards;
+      }
+
+      @keyframes streamer-fall {
+        0% {
+          transform: translateY(-20vh) rotate(0deg) rotateX(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(120vh) rotate(720deg) rotateX(360deg);
+          opacity: 0;
+        }
+      }
+
+      .streamer {
+        position: absolute;
+        width: 12px;
+        height: 60px;
+        top: -80px;
+        opacity: 0.9;
+        border-radius: 4px;
+      }
+
+      @keyframes planet-swing-soft {
+        0% {
+          transform: rotate(-4deg) translateX(-3px);
+        }
+        50% {
+          transform: rotate(4deg) translateX(3px);
+        }
+        100% {
+          transform: rotate(-4deg) translateX(-3px);
+        }
+      }
+
+      @keyframes planet-swing-wide {
+        0% {
+          transform: rotate(-8deg) translateX(-5px);
+        }
+        50% {
+          transform: rotate(8deg) translateX(5px);
+        }
+        100% {
+          transform: rotate(-8deg) translateX(-5px);
+        }
+      }
+
+      @keyframes planet-bounce {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.08);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes planet-float {
+        0% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      @keyframes planet-twist {
+        0% {
+          transform: rotate(-5deg);
+        }
+        50% {
+          transform: rotate(5deg);
+        }
+        100% {
+          transform: rotate(-5deg);
+        }
+      }
+
+      .planet-swing-1 {
+        animation: planet-swing-soft 2.6s ease-in-out infinite;
+      }
+
+      .planet-swing-2 {
+        animation: planet-swing-wide 3s ease-in-out infinite;
+      }
+
+      .planet-swing-3 {
+        animation: planet-bounce 2.4s ease-in-out infinite;
+      }
+
+      .planet-swing-4 {
+        animation: planet-float 3.4s ease-in-out infinite;
+      }
+
+      .planet-swing-5 {
+        animation: planet-twist 2.2s ease-in-out infinite;
+      }
+
+      .planet-connector-line-bg {
+        position: absolute;
+        top: 0;
+        left: 5%;
+        right: 5%;
+        height: 4px;
+        border-radius: 9999px;
+        background: linear-gradient(
+          90deg,
+          rgba(248, 187, 208, 0.4),
+          rgba(244, 114, 182, 0.4),
+          rgba(129, 140, 248, 0.4)
+        );
+      }
+
+      .planet-connector-line-active {
+        position: absolute;
+        top: 0;
+        left: 5%;
+        height: 4px;
+        border-radius: 9999px;
+        background-image: linear-gradient(
+          90deg,
+          #f472b6,
+          #a855f7,
+          #22d3ee,
+          #f97316
+        );
+        background-size: 200% 100%;
+        box-shadow: 0 0 14px rgba(236, 72, 153, 0.7);
+        transition: width 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+        animation: planet-rope-flow 2s linear infinite;
+      }
+
+      @keyframes planet-rope-flow {
+        0% {
+          background-position: 0% 50%;
+        }
+        100% {
+          background-position: 100% 50%;
+        }
+      }
+
+      .royal-bg {
+        background: radial-gradient(
+          circle at top,
+          #ffe9f4,
+          #fde7f2 45%,
+          #fbe4f0
+        );
+      }
+
+      .royal-panel {
+        background: #ffffff;
+        border: 1px solid rgba(148, 163, 184, 0.35);
+        box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+      }
+
+      .royal-panel-animated {
+        position: relative;
+        border-radius: 1.5rem;
+        border: 2px solid transparent;
+        background:
+          linear-gradient(#ffffff, #ffffff) padding-box,
+          linear-gradient(120deg, #f97316, #ec4899, #8b5cf6, #22c55e, #f97316)
+            border-box;
+        background-size:
+          100% 100%,
+          300% 300%;
+        animation: royal-panel-rgb 6s linear infinite;
+      }
+
+      @keyframes royal-panel-rgb {
+        0% {
+          background-position:
+            0% 0%,
+            0% 50%;
+        }
+        50% {
+          background-position:
+            0% 0%,
+            100% 50%;
+        }
+        100% {
+          background-position:
+            0% 0%,
+            0% 50%;
+        }
+      }
+
+      .font-playfair {
+        font-family:
+          "Playfair Display",
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+
+      .font-great-vibes {
+        font-family: "Great Vibes", cursive;
+      }
+
+      @keyframes fade-in-up-soft {
+        0% {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .fade-in-up {
+        animation: fade-in-up-soft 0.8s ease-out both;
+      }
+
+      .parallax-layer {
+        position: absolute;
+        inset: -20%;
+        transform-origin: center;
+      }
+
+      @keyframes parallax-drift-far {
+        0% {
+          transform: translate3d(-12px, -18px, 0) scale(1.1);
+        }
+        100% {
+          transform: translate3d(8px, 12px, 0) scale(1.1);
+        }
+      }
+
+      @keyframes parallax-drift-near {
+        0% {
+          transform: translate3d(16px, 10px, 0) scale(1.15);
+        }
+        100% {
+          transform: translate3d(-12px, -12px, 0) scale(1.15);
+        }
+      }
+
+      .parallax-layer-far {
+        animation: parallax-drift-far 26s ease-in-out infinite alternate;
+      }
+
+      .parallax-layer-near {
+        animation: parallax-drift-near 32s ease-in-out infinite alternate;
+      }
+
+      @keyframes petal-fall-soft {
+        0% {
+          transform: translateY(115vh) translateX(0) rotate(0deg);
+          opacity: 0;
+        }
+        15% {
+          opacity: 0.9;
+        }
+        100% {
+          transform: translateY(-12vh) translateX(30px) rotate(260deg);
+          opacity: 0;
+        }
+      }
+
+      .floating-petal {
+        position: absolute;
+        top: -10%;
+        will-change: transform, opacity;
+        animation-name: petal-fall-soft;
+        animation-timing-function: linear;
+        animation-iteration-count: infinite;
+      }
+
+      @keyframes heart-rise {
+        0% {
+          transform: translateY(40vh) scale(0.6);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        70% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(0) scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes heart-rise-center {
+        0% {
+          transform: translateY(40vh) scale(0.7);
+          opacity: 0;
+        }
+        30% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(0) scale(0.9);
+          opacity: 1;
+        }
+      }
+
+      @keyframes heart-beat {
+        0%,
+        100% {
+          transform: scale(1) rotateY(0deg);
+        }
+        25% {
+          transform: scale(1.08) rotateY(12deg);
+        }
+        50% {
+          transform: scale(0.98) rotateY(0deg);
+        }
+        75% {
+          transform: scale(1.04) rotateY(-12deg);
+        }
+      }
+
+      @keyframes heart-piece-move-top-left {
+        0% {
+          transform: translate(-50%, -50%) scale(0.6);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-120%, -160%) scale(0.4);
+          opacity: 0;
+        }
+      }
+
+      @keyframes heart-piece-move-top-right {
+        0% {
+          transform: translate(-50%, -50%) scale(0.6);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(20%, -160%) scale(0.4);
+          opacity: 0;
+        }
+      }
+
+      @keyframes heart-piece-move-bottom-left {
+        0% {
+          transform: translate(-50%, -50%) scale(0.6);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(-140%, 10%) scale(0.4);
+          opacity: 0;
+        }
+      }
+
+      @keyframes heart-piece-move-bottom-right {
+        0% {
+          transform: translate(-50%, -50%) scale(0.6);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(30%, 10%) scale(0.4);
+          opacity: 0;
+        }
+      }
+
+      .heart-slot-left,
+      .heart-slot-center,
+      .heart-slot-right {
+        position: absolute;
+      }
+
+      .heart-slot-left {
+        left: 10%;
+        top: 12%;
+      }
+
+      .heart-slot-center {
+        left: 50%;
+        top: 10%;
+        transform: translateX(-50%);
+      }
+
+      .heart-slot-right {
+        right: 10%;
+        top: 12%;
+      }
+
+      .heart-floating {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.5rem 0.75rem;
+        border-radius: 9999px;
+        border: 2px solid rgba(244, 114, 182, 0.4);
+        animation:
+          heart-rise 12s ease-in-out forwards,
+          heart-border-blink 1.4s ease-in-out infinite;
+      }
+
+      .heart-floating.center {
+        animation:
+          heart-rise-center 12s ease-out forwards,
+          heart-border-blink 1.4s ease-in-out infinite;
+      }
+
+      @keyframes heart-border-blink {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(244, 114, 182, 0);
+          border-color: rgba(244, 114, 182, 0.2);
+        }
+        50% {
+          box-shadow: 0 0 18px rgba(244, 114, 182, 0.9);
+          border-color: rgba(244, 114, 182, 0.9);
+        }
+      }
+
+      .heart-center-inner {
+        display: inline-block;
+        animation: heart-beat 3s ease-in-out infinite;
+      }
+
+      .hug-character {
+        position: relative;
+        transform-origin: center bottom;
+        transition:
+          transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+          filter 0.8s ease-out;
+        z-index: 10;
+      }
+
+      .hug-character-boy-active {
+        transform: translateX(30px) translateY(-4px) scale(1.04) rotate(8deg);
+        filter: drop-shadow(0 0 26px rgba(248, 113, 113, 0.6));
+        z-index: 20;
+      }
+
+      .hug-character-girl-active {
+        transform: translateX(-30px) translateY(-8px) scale(1.04) rotate(-8deg);
+        filter: drop-shadow(0 0 26px rgba(244, 114, 182, 0.6));
+        z-index: 15;
+      }
+
+      @keyframes hug-heart-burst {
+        0% {
+          transform: scale(0.4);
+          opacity: 0;
+        }
+        40% {
+          transform: scale(1.25);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 0;
+        }
+      }
+
+      .hug-heart-burst {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: none;
+      }
+
+      .hug-heart-burst-inner {
+        display: flex;
+        gap: 0.75rem;
+        animation: hug-heart-burst 1.2s ease-out forwards;
+      }
+
+      .hug-heart-button {
+        transition:
+          transform 0.25s ease-out,
+          filter 0.25s ease-out;
+      }
+
+      .hug-heart-button-active {
+        animation: hug-heart-press 0.9s ease-in-out infinite;
+      }
+
+      @keyframes hug-heart-press {
+        0%,
+        100% {
+          transform: scale(1);
+          filter: drop-shadow(0 0 0 rgba(248, 113, 113, 0.3));
+        }
+        50% {
+          transform: scale(1.3);
+          filter: drop-shadow(0 0 22px rgba(248, 113, 113, 0.9));
+        }
+      }
+
+      .kiss-heart-container {
+        position: relative;
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .kiss-heart-icon {
+        font-size: 3rem;
+        transform-origin: center;
+        opacity: 0;
+      }
+
+      .kiss-heart-text {
+        position: absolute;
+        bottom: -6px;
+        font-size: 0.875rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: white;
+        opacity: 0;
+      }
+
+      .kiss-heart-active .kiss-heart-icon {
+        animation:
+          kiss-heart-appear 1.6s ease-out forwards,
+          heart-beat 2.4s ease-in-out 1.6s infinite;
+      }
+
+      .kiss-heart-active .kiss-heart-text {
+        animation: kiss-heart-text-pop 1.8s ease-out 1.8s infinite;
+      }
+
+      @keyframes kiss-heart-appear {
+        0% {
+          transform: scale(0.2);
+          opacity: 0;
+        }
+        40% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        70% {
+          transform: scale(0.95);
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+
+      @keyframes kiss-heart-text-pop {
+        0% {
+          transform: translateY(8px) scale(0.8);
+          opacity: 0;
+        }
+        25% {
+          opacity: 1;
+        }
+        55% {
+          transform: translateY(-8px) scale(1);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-18px) scale(0.9);
+          opacity: 0;
+        }
+      }
+
+      .kiss-character {
+        position: relative;
+        transform-origin: center bottom;
+        transition:
+          transform 0.8s cubic-bezier(0.22, 0.61, 0.36, 1),
+          filter 0.8s ease-out;
+        z-index: 10;
+      }
+
+      .kiss-character-boy-active {
+        transform: translateX(26px) translateY(-6px) scale(1.05) rotate(8deg);
+        filter: drop-shadow(0 0 22px rgba(248, 113, 113, 0.7));
+        z-index: 20;
+      }
+
+      .kiss-character-girl-active {
+        transform: translateX(-26px) translateY(-6px) scale(1.05) rotate(-8deg);
+        filter: drop-shadow(0 0 22px rgba(244, 114, 182, 0.7));
+        z-index: 20;
+      }
+
+      @keyframes maryam-heart-fly {
+        0% {
+          transform: translate(120%, -50%) scale(0.4);
+          opacity: 0;
+        }
+        20% {
+          opacity: 1;
+        }
+        60% {
+          transform: translate(0%, -50%) scale(1);
+          opacity: 1;
+        }
+        80% {
+          transform: translate(0%, -50%) scale(1.2);
+          opacity: 1;
+        }
+        100% {
+          transform: translate(0%, -50%) scale(2.4);
+          opacity: 0;
+        }
+      }
+
+      .maryam-flying-heart {
+        position: absolute;
+        top: 50%;
+        right: 4%;
+        transform: translateY(-50%);
+        font-size: 2.75rem;
+        filter: drop-shadow(0 0 14px rgba(248, 113, 113, 0.9));
+        animation: maryam-heart-fly 8s ease-in-out forwards;
+      }
+
+      .heart-explode {
+        position: relative;
+        width: 48px;
+        height: 48px;
+      }
+
+      .heart-piece {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        opacity: 0;
+      }
+
+      .heart-piece-0 {
+        animation: heart-piece-move-top-left 0.7s ease-out forwards;
+      }
+
+      .heart-piece-1 {
+        animation: heart-piece-move-top-right 0.7s ease-out forwards;
+      }
+
+      .heart-piece-2 {
+        animation: heart-piece-move-bottom-left 0.7s ease-out forwards;
+      }
+
+      .heart-piece-3 {
+        animation: heart-piece-move-bottom-right 0.7s ease-out forwards;
+      }
+
+      .heart-name-left,
+      .heart-name-right {
+        position: absolute;
+        top: 13%;
+      }
+
+      .heart-name-left {
+        left: 50%;
+        transform: translateX(calc(-100% - 3rem));
+      }
+
+      .heart-name-right {
+        left: 50%;
+        transform: translateX(3rem);
+      }
+
+      .golden-quote {
+        position: relative;
+        border-radius: 1.5rem;
+        background: radial-gradient(
+          circle at top,
+          rgba(255, 255, 255, 0.98),
+          rgba(254, 202, 232, 0.96)
+        );
+        border: 1px solid rgba(244, 114, 182, 0.6);
+        box-shadow: 0 18px 40px rgba(244, 114, 182, 0.3);
+      }
+
+      .golden-quote-label {
+        font-size: 0.8rem;
+        letter-spacing: 0.22em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: #f9a8d4;
+        text-shadow:
+          0 1px 3px rgba(190, 24, 93, 0.45),
+          0 0 14px rgba(236, 72, 153, 0.85);
+      }
+
+      .golden-quote-text {
+        font-size: 1.18rem;
+        line-height: 1.85;
+        font-weight: 600;
+        letter-spacing: 0.03em;
+        color: #fb7185;
+        text-align: center;
+        text-shadow:
+          0 1px 3px rgba(190, 24, 93, 0.4),
+          0 0 20px rgba(236, 72, 153, 0.8);
+      }
+
+      .golden-quote-glow {
+        position: absolute;
+        inset: -2px;
+        border-radius: inherit;
+        background: linear-gradient(
+          120deg,
+          rgba(252, 231, 243, 0),
+          rgba(244, 114, 182, 0.65),
+          rgba(252, 231, 243, 0)
+        );
+        opacity: 0;
+        pointer-events: none;
+        animation: gold-shimmer 1.4s ease-out forwards;
+      }
+
+      @keyframes gold-shimmer {
+        0% {
+          opacity: 0;
+          transform: translateX(-25%);
+        }
+        35% {
+          opacity: 0.85;
+        }
+        100% {
+          opacity: 0;
+          transform: translateX(35%);
+        }
+      }
+
+      @keyframes balloon-rise {
+        0% {
+          transform: translate3d(0, 20vh, 0) scale(0.85) rotate(-2deg);
+          opacity: 0;
+        }
+        15% {
+          transform: translate3d(4px, 8vh, 0) scale(0.95) rotate(1deg);
+          opacity: 0.9;
+        }
+        40% {
+          transform: translate3d(-6px, -10vh, 0) scale(1.02) rotate(-1.5deg);
+          opacity: 1;
+        }
+        70% {
+          transform: translate3d(5px, -55vh, 0) scale(1.06) rotate(2deg);
+          opacity: 0.96;
+        }
+        100% {
+          transform: translate3d(0, -115vh, 0) scale(1.1) rotate(0deg);
+          opacity: 0;
+        }
+      }
+
+      .balloon {
+        position: absolute;
+        top: 100%;
+        border-radius: 52% 48% 46% 54% / 62% 62% 40% 40%;
+        box-shadow:
+          0 14px 28px rgba(148, 163, 184, 0.45),
+          0 0 22px rgba(248, 250, 252, 0.3);
+        animation-name: balloon-rise;
+        animation-timing-function: cubic-bezier(0.35, 0, 0.25, 1);
+        animation-iteration-count: infinite;
+        transform-origin: 50% 90%;
+        opacity: 0;
+        will-change: transform, opacity;
+      }
+
+      .balloon::before {
+        content: "";
+        position: absolute;
+        top: 12%;
+        left: 18%;
+        width: 46%;
+        height: 58%;
+        border-radius: 9999px;
+        background: radial-gradient(
+          circle at 10% 0%,
+          rgba(255, 255, 255, 0.95),
+          rgba(255, 255, 255, 0)
+        );
+        opacity: 0.9;
+        transform: rotate(-16deg);
+      }
+
+      .balloon::after {
+        content: "";
+        position: absolute;
+        bottom: -6px;
+        left: 50%;
+        width: 10px;
+        height: 10px;
+        transform: translateX(-50%) rotate(45deg);
+        border-radius: 2px;
+        background: rgba(15, 23, 42, 0.08);
+      }
+
+      .balloon-latex {
+        background: radial-gradient(
+          circle at 30% 18%,
+          #ffffff,
+          #fb7185 55%,
+          #be123c 100%
+        );
+      }
+
+      .balloon-helium {
+        background: radial-gradient(
+          circle at 30% 18%,
+          #ffffff,
+          #38bdf8 55%,
+          #0ea5e9 100%
+        );
+      }
+
+      .balloon-foil {
+        background: linear-gradient(135deg, #f3e8ff, #a855f7, #f9a8d4, #e0f2fe);
+        border: 1px solid rgba(255, 255, 255, 0.9);
+        box-shadow:
+          0 14px 28px rgba(129, 140, 248, 0.55),
+          0 0 30px rgba(244, 114, 182, 0.65);
+      }
+
+      .balloon-led {
+        background: radial-gradient(
+          circle at 30% 18%,
+          #fed7aa,
+          #f97316 55%,
+          #7c2d12 100%
+        );
+        box-shadow:
+          0 0 14px rgba(248, 250, 252, 0.95),
+          0 0 40px rgba(248, 113, 113, 0.9);
+      }
+
+      .balloon-confetti {
+        background: radial-gradient(
+          circle at 30% 18%,
+          #fef9c3,
+          #f97316 60%,
+          #b45309 100%
+        );
+      }
+
+      @keyframes balloon-string-sway {
+        0% {
+          transform: translateX(-50%) rotate(-3deg);
+        }
+        50% {
+          transform: translateX(-50%) rotate(3deg);
+        }
+        100% {
+          transform: translateX(-50%) rotate(-3deg);
+        }
+      }
+
+      .balloon-string {
+        position: absolute;
+        bottom: -52%;
+        left: 50%;
+        width: 1.5px;
+        height: 56%;
+        background: linear-gradient(
+          to bottom,
+          rgba(148, 163, 184, 0.95),
+          rgba(148, 163, 184, 0.25)
+        );
+        transform-origin: top center;
+        animation: balloon-string-sway 3.2s ease-in-out infinite;
+      }
+    </style>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body
+    class="min-h-screen bg-white flex items-center justify-center font-playfair"
+  >
+    <div id="root"></div>
+    <script type="text/babel">
+      const { useState, useEffect, useRef } = React;
+
+      const Typewriter = ({ text, delay = 50, onComplete }) => {
+        const [displayedText, setDisplayedText] = useState("");
+        const [index, setIndex] = useState(0);
+
+        useEffect(() => {
+          if (index < text.length) {
+            const timeout = setTimeout(() => {
+              setDisplayedText((prev) => prev + text[index]);
+              setIndex((prev) => prev + 1);
+            }, delay);
+            return () => clearTimeout(timeout);
+          } else if (onComplete) {
+            onComplete();
+          }
+        }, [index, text, delay, onComplete]);
+
+        return <span>{displayedText}</span>;
+      };
+
+      const BoyCharacter = ({ style, className = "", armUp = false }) => (
+        <div
+          style={style}
+          className={`transition-all duration-500 ${className}`}
+        >
+          <svg width="80" height="100" viewBox="0 0 100 120">
+            <path d="M20 40 Q20 0 50 -5 Q80 0 80 40 Z" fill="#333" />
+            <circle
+              cx="50"
+              cy="30"
+              r="25"
+              fill="#FFDAB9"
+              stroke="#333"
+              strokeWidth="2"
+            />
+            <path
+              d="M24 32 C24 10 35 -2 50 -2 C65 -2 76 10 76 32 C76 20 65 10 50 15 C35 10 24 20 24 32 Z"
+              fill="#333"
+            />
+            <g className="eye-blink">
+              <circle cx="40" cy="25" r="4" fill="#fff" />
+              <circle cx="40" cy="25" r="2.2" fill="#333" />
+              <circle cx="39" cy="24" r="0.8" fill="#fef3c7" />
+            </g>
+            <g className="eye-blink">
+              <circle cx="60" cy="25" r="4" fill="#fff" />
+              <circle cx="60" cy="25" r="2.2" fill="#333" />
+              <circle cx="59" cy="24" r="0.8" fill="#fef3c7" />
+            </g>
+            <path
+              d="M48 26 Q53 28 48 31"
+              fill="none"
+              stroke="#e5966c"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            />
+            <path
+              d="M40 40 Q50 45 60 40"
+              fill="none"
+              stroke="#333"
+              strokeWidth="2"
+            />
+            <rect x="30" y="55" width="40" height="50" rx="10" fill="#4A90E2" />
+            <line
+              x1="30"
+              y1="65"
+              x2="15"
+              y2="85"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <line
+              x1="70"
+              y1="65"
+              x2="85"
+              y2={armUp ? 50 : 85}
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <line
+              x1="40"
+              y1="105"
+              x2="40"
+              y2="118"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <line
+              x1="60"
+              y1="105"
+              x2="60"
+              y2="118"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <text
+              x="50"
+              y="85"
+              fontSize="10"
+              textAnchor="middle"
+              fill="white"
+              fontWeight="bold"
+            >
+              Azkeel
+            </text>
+          </svg>
+        </div>
+      );
+
+      const GirlCharacter = ({ style, className = "" }) => (
+        <div
+          style={style}
+          className={`transition-all duration-500 ${className}`}
+        >
+          <svg width="80" height="100" viewBox="0 0 100 120">
+            <path
+              d="M10 35 Q10 -5 50 -5 Q90 -5 90 35 L95 85 Q50 95 5 85 Z"
+              fill="#4B2C20"
+            />
+            <circle
+              cx="50"
+              cy="30"
+              r="25"
+              fill="#FFDAB9"
+              stroke="#333"
+              strokeWidth="2"
+            />
+            <path
+              d="M24 32 C24 10 35 -2 50 -2 C65 -2 76 10 76 32 C76 20 65 10 50 15 C35 10 24 20 24 32 Z"
+              fill="#4B2C20"
+            />
+            <g className="eye-blink">
+              <circle cx="40" cy="25" r="4" fill="#fff" />
+              <circle cx="40" cy="25" r="2.2" fill="#333" />
+              <circle cx="39" cy="24" r="0.8" fill="#fef3c7" />
+            </g>
+            <g className="eye-blink">
+              <circle cx="60" cy="25" r="4" fill="#fff" />
+              <circle cx="60" cy="25" r="2.2" fill="#333" />
+              <circle cx="59" cy="24" r="0.8" fill="#fef3c7" />
+            </g>
+            <path
+              d="M50 26 Q51 30 50 34"
+              fill="none"
+              stroke="#e5966c"
+              strokeWidth="1.6"
+              strokeLinecap="round"
+            />
+            <path
+              d="M40 40 Q50 45 60 40"
+              fill="none"
+              stroke="#333"
+              strokeWidth="2"
+            />
+            <path d="M30 55 L70 55 L80 105 L20 105 Z" fill="#FF69B4" />
+            <line
+              x1="30"
+              y1="65"
+              x2="15"
+              y2="85"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <line
+              x1="70"
+              y1="65"
+              x2="85"
+              y2="85"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <line
+              x1="40"
+              y1="105"
+              x2="40"
+              y2="118"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <line
+              x1="60"
+              y1="105"
+              x2="60"
+              y2="118"
+              stroke="#333"
+              strokeWidth="3"
+              strokeLinecap="round"
+            />
+            <text
+              x="50"
+              y="85"
+              fontSize="10"
+              textAnchor="middle"
+              fill="white"
+              fontWeight="bold"
+            >
+              Maryam
+            </text>
+          </svg>
+        </div>
+      );
+
+      const Heart = ({ className = "", style, size = 24 }) => (
+        <span
+          className={className}
+          style={{ fontSize: size, lineHeight: 1, ...style }}
+        >
+          ❤️
+        </span>
+      );
+
+      const Sparkles = ({ className = "", style, size = 20 }) => (
+        <span
+          className={className}
+          style={{ fontSize: size, lineHeight: 1, ...style }}
+        >
+          ✨
+        </span>
+      );
+
+      const Gift = ({ className = "", size = 80 }) => (
+        <span className={className} style={{ fontSize: size }}>
+          🎁
+        </span>
+      );
+
+      const PartyPopper = ({ className = "", size = 24 }) => (
+        <span className={className} style={{ fontSize: size }}>
+          🎉
+        </span>
+      );
+
+      const CapHat = ({ className = "", size = 40, ...props }) => (
+        <svg
+          className={className}
+          width={size}
+          height={size}
+          viewBox="0 0 40 40"
+          {...props}
+        >
+          <defs>
+            <linearGradient id="hatGradient" x1="0" y1="1" x2="1" y2="0">
+              <stop offset="0%" stopColor="#ec4899" />
+              <stop offset="100%" stopColor="#facc15" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M4 30 L20 6 L36 30 Z"
+            fill="url(#hatGradient)"
+            stroke="#f97316"
+            strokeWidth="1.5"
+          />
+          <rect x="8" y="28" width="24" height="4" rx="2" fill="#f97316" />
+          <circle cx="20" cy="4" r="3" fill="#ef4444" />
+        </svg>
+      );
+
+      function App() {
+        const petalEmojis = ["🌸", "🌹", "🌼", "💮", "🌷"];
+        const planetEmojis = ["🪐", "🌍", "🌙", "☄️", "⭐"];
+        const planetActiveClasses = [
+          "bg-gradient-to-br from-pink-500 to-red-500 border-red-400 text-white scale-110",
+          "bg-gradient-to-br from-green-400 to-emerald-600 border-green-300 text-white scale-110",
+          "bg-gradient-to-br from-yellow-400 to-orange-500 border-yellow-300 text-white scale-110",
+          "bg-gradient-to-br from-blue-400 to-sky-600 border-blue-300 text-white scale-110",
+          "bg-gradient-to-br from-purple-500 to-indigo-600 border-purple-400 text-white scale-110",
+        ];
+        const storyQuotes = [
+          "Meri har subah tumhari muskurahat se roshan hoti hai.",
+          "Tumhara naam lete hi dil automatic smile kar deta hai.",
+          "Har dua mein sab se pehle tumhari khushi maangta hun.",
+          "Har saal ye din sirf tumhari royalty celebrate karne ke liye hai.",
+          "Again Happy Birthday meri Royal Queen Mishu, meri chuhi, meri boogi, mery dil ka sakoon, meri dunya, meri guddi, meri zindgi. 👑❤️",
+        ];
+        const emotionalHeartLines = [
+          "Jab bhi tumhara naam aata hai, dil ki dhadkan halka sa ruk jati hai.",
+          "Maryam, tumhare bina har khushi adhoori aur har raah tanha lagti hai.",
+          "Tumhari hansi se hi meri sari thakan aur gham door ho jate hain.",
+          "Jab tum udaas hoti ho, meri rooh tak bechain ho jati hai.",
+          "Tum meri zindagi ka wo hissa ho jo kabhi replace nahi ho sakta.",
+        ];
+        const balloonConfigs = [
+          { key: "latex", count: 6, className: "balloon-latex" },
+          { key: "helium", count: 6, className: "balloon-helium" },
+          { key: "foil", count: 6, className: "balloon-foil" },
+          { key: "led", count: 6, className: "balloon-led" },
+          { key: "confetti", count: 8, className: "balloon-confetti" },
+        ];
+        const [balloonGroups] = useState(() =>
+          balloonConfigs.map((cfg) => ({
+            key: cfg.key,
+            className: cfg.className,
+            items: Array.from({ length: cfg.count }).map((_, index) => {
+              const baseSize = 30 + Math.random() * 20;
+              const slowFactor = 0.9 + Math.random() * 0.4;
+              return {
+                id: `${cfg.key}-${index}`,
+                left: 6 + Math.random() * 88,
+                duration: (26 + Math.random() * 18) * slowFactor,
+                delay: Math.random() * 16,
+                size: baseSize,
+              };
+            }),
+          })),
+        );
+        const [step, setStep] = useState(1);
+        const [loveProgress, setLoveProgress] = useState(0);
+        const [isPressing, setIsPressing] = useState(false);
+        const [candles, setCandles] = useState([false, false, false]);
+        const [candlesBlown, setCandlesBlown] = useState(false);
+        const [isBlowing, setIsBlowing] = useState(false);
+        const [showSmoke, setShowSmoke] = useState(false);
+        const [isHugged, setIsHugged] = useState(false);
+        const [hugCompleted, setHugCompleted] = useState(false);
+        const [heartJoined, setHeartJoined] = useState(false);
+        const [noLoveMessage, setNoLoveMessage] = useState(false);
+        const [noBirthdayMessage, setNoBirthdayMessage] = useState(false);
+        const [fireworks, setFireworks] = useState([]);
+        const [capOn, setCapOn] = useState(false);
+        const [capFlying, setCapFlying] = useState(false);
+        const [cakeCut, setCakeCut] = useState(false);
+        const [showKnife, setShowKnife] = useState(false);
+        const [confettiPieces, setConfettiPieces] = useState([]);
+        const [showConfetti, setShowConfetti] = useState(false);
+        const [petalClickCount, setPetalClickCount] = useState(0);
+        const [currentPetalEmojiIndex, setCurrentPetalEmojiIndex] = useState(0);
+        const [showAskForMorePetals, setShowAskForMorePetals] = useState(false);
+        const [capTextComplete, setCapTextComplete] = useState(false);
+        const [showCapButton, setShowCapButton] = useState(false);
+        const [firstPetalTextComplete, setFirstPetalTextComplete] =
+          useState(false);
+        const [secondPetalTextComplete, setSecondPetalTextComplete] =
+          useState(false);
+        const [blastParticles, setBlastParticles] = useState([]);
+        const [streamers, setStreamers] = useState([]);
+        const [showCakeButton, setShowCakeButton] = useState(false);
+        const [showChaleinButton, setShowChaleinButton] = useState(false);
+        const [showYesButton, setShowYesButton] = useState(false);
+        const [showNoButton, setShowNoButton] = useState(false);
+        const [showGHaanButton, setShowGHaanButton] = useState(false);
+        const [showKasayButton, setShowKasayButton] = useState(false);
+        const [showLekinButton, setShowLekinButton] = useState(false);
+        const [showJiBilkulButton, setShowJiBilkulButton] = useState(false);
+        const [planetConnections, setPlanetConnections] = useState(
+          Array(planetEmojis.length).fill(false),
+        );
+        const [floatingPetals, setFloatingPetals] = useState([]);
+        const [showLeftHeart, setShowLeftHeart] = useState(true);
+        const [showRightHeart, setShowRightHeart] = useState(true);
+        const [leftHeartExploding, setLeftHeartExploding] = useState(false);
+        const [rightHeartExploding, setRightHeartExploding] = useState(false);
+        const [showAzkeelText, setShowAzkeelText] = useState(false);
+        const [showMishuText, setShowMishuText] = useState(false);
+        const [storyIndex, setStoryIndex] = useState(-1);
+        const [musicStarted, setMusicStarted] = useState(false);
+        const [showLetterIcon, setShowLetterIcon] = useState(false);
+        const [isLetterOpen, setIsLetterOpen] = useState(false);
+
+        const [roseBloomed, setRoseBloomed] = useState(false);
+        const [flyingHeartActive, setFlyingHeartActive] = useState(false);
+        const [maryamHeartExploding, setMaryamHeartExploding] = useState(false);
+        const [emotionalLine, setEmotionalLine] = useState("");
+        const [heartSequenceCount, setHeartSequenceCount] = useState(0);
+        const [showHeartNextButton, setShowHeartNextButton] = useState(false);
+
+        const [redBombActive, setRedBombActive] = useState(false);
+        const [greenBombActive, setGreenBombActive] = useState(false);
+        const [blueBombActive, setBlueBombActive] = useState(false);
+        const [smokeMessageStarted, setSmokeMessageStarted] = useState(false);
+        const [showSmokeNextButton, setShowSmokeNextButton] = useState(false);
+        const [flowerLineComplete, setFlowerLineComplete] = useState(false);
+
+        const audioRef = useRef(null);
+
+        useEffect(() => {
+          if (step === 1) {
+            const timer = setTimeout(() => setStep(1.5), 10000);
+            return () => clearTimeout(timer);
+          }
+          if (step === 3) {
+            const timer = setTimeout(() => setStep(4), 3000);
+            return () => clearTimeout(timer);
+          }
+          if (step === 5) {
+            const timer = setTimeout(() => setStep(6), 5000);
+            return () => clearTimeout(timer);
+          }
+          if (step === 6.5) {
+            const timer = setTimeout(() => setStep(7), 5000);
+            return () => clearTimeout(timer);
+          }
+          if (step === 9) {
+            const timer = setTimeout(() => setStep(9.5), 3000);
+            return () => clearTimeout(timer);
+          }
+        }, [step]);
+
+        useEffect(() => {
+          if (!capOn || step !== 10) {
+            setShowAskForMorePetals(false);
+            setPetalClickCount(0);
+            setCurrentPetalEmojiIndex(0);
+            setFirstPetalTextComplete(false);
+            setSecondPetalTextComplete(false);
+            return;
+          }
+          setPetalClickCount(0);
+          setCurrentPetalEmojiIndex(0);
+          if (!firstPetalTextComplete) {
+            setShowAskForMorePetals(false);
+            setSecondPetalTextComplete(false);
+            return;
+          }
+          setShowAskForMorePetals(false);
+          setSecondPetalTextComplete(false);
+          const timer = setTimeout(() => {
+            setShowAskForMorePetals(true);
+          }, 3000);
+          return () => clearTimeout(timer);
+        }, [capOn, step, firstPetalTextComplete]);
+
+        useEffect(() => {
+          if (step !== 10 || capOn) {
+            setCapTextComplete(false);
+            setShowCapButton(false);
+            return;
+          }
+          if (!capTextComplete) {
+            setShowCapButton(false);
+            return;
+          }
+          const timer = setTimeout(() => {
+            setShowCapButton(true);
+          }, 3000);
+          return () => clearTimeout(timer);
+        }, [step, capOn, capTextComplete]);
+
+        useEffect(() => {
+          if (step !== 1.5) {
+            setShowChaleinButton(false);
+          }
+        }, [step]);
+
+        useEffect(() => {
+          if (step !== 2 && step !== 4) {
+            setShowYesButton(false);
+            setShowNoButton(false);
+          }
+          if (step !== 6) {
+            setShowGHaanButton(false);
+          }
+          if (step !== 7) {
+            setShowKasayButton(false);
+          }
+          if (step !== 7.5) {
+            setShowLekinButton(false);
+          }
+          if (step !== 8) {
+            setShowJiBilkulButton(false);
+          }
+        }, [step]);
+
+        useEffect(() => {
+          let interval;
+          if (isPressing && step === 15) {
+            interval = setInterval(() => {
+              setLoveProgress((prev) => {
+                if (prev >= 100) {
+                  clearInterval(interval);
+                  setTimeout(() => setStep(16), 1500);
+                  return 100;
+                }
+                return prev + 2;
+              });
+            }, 50);
+          }
+          return () => clearInterval(interval);
+        }, [isPressing, step]);
+
+        useEffect(() => {
+          let hugTimer;
+          if (step !== 14) {
+            setIsHugged(false);
+            setHugCompleted(false);
+            return;
+          }
+          if (isPressing && !hugCompleted) {
+            hugTimer = setTimeout(() => {
+              setIsHugged(true);
+              setHugCompleted(true);
+              if (
+                typeof window !== "undefined" &&
+                window.navigator &&
+                window.navigator.vibrate
+              ) {
+                window.navigator.vibrate([80, 40, 80]);
+              }
+            }, 600);
+          }
+          if (!isPressing && !hugCompleted) {
+            setIsHugged(false);
+          }
+          return () => {
+            clearTimeout(hugTimer);
+          };
+        }, [isPressing, step, hugCompleted]);
+
+        useEffect(() => {
+          if (storyIndex === storyQuotes.length - 1 && storyIndex >= 0) {
+            const timeouts = [];
+            startConfetti({ count: 120, duration: 4 });
+            triggerBlast();
+            timeouts.push(setTimeout(triggerBlast, 1800));
+            timeouts.push(setTimeout(triggerBlast, 3400));
+            triggerStreamers();
+            timeouts.push(setTimeout(triggerStreamers, 6000));
+            for (let i = 0; i < 6; i += 1) {
+              const id = setTimeout(() => {
+                launchFirework();
+              }, i * 400);
+              timeouts.push(id);
+            }
+            setShowLetterIcon(true);
+            const celebrationLoop = setInterval(() => {
+              const random = Math.random();
+              if (random < 0.4) {
+                startConfetti({ count: 80, duration: 3 });
+              } else if (random < 0.7) {
+                triggerBlast();
+              } else {
+                for (let i = 0; i < 3; i += 1) {
+                  launchFirework();
+                }
+              }
+              if (Math.random() > 0.65) {
+                triggerStreamers();
+              }
+            }, 7000);
+            return () => {
+              timeouts.forEach((id) => clearTimeout(id));
+              clearInterval(celebrationLoop);
+            };
+          }
+        }, [storyIndex, storyQuotes.length]);
+
+        useEffect(() => {
+          if (step === 12 && cakeCut) {
+            startConfetti({ count: 80, duration: 2.5 });
+            triggerBlast();
+            for (let i = 0; i < 5; i += 1) {
+              setTimeout(() => {
+                launchFirework();
+              }, i * 250);
+            }
+          }
+        }, [step, cakeCut]);
+
+        useEffect(() => {
+          if (step === 12.5) {
+            setRedBombActive(false);
+            setGreenBombActive(false);
+            setBlueBombActive(false);
+            setSmokeMessageStarted(false);
+            setShowSmokeNextButton(false);
+          }
+        }, [step]);
+
+        useEffect(() => {
+          if (step !== 13) {
+            setFlowerLineComplete(false);
+          }
+        }, [step]);
+
+        useEffect(() => {
+          if (step !== 13.5) {
+            setRoseBloomed(false);
+            setFlyingHeartActive(false);
+            setMaryamHeartExploding(false);
+            setEmotionalLine("");
+            setHeartSequenceCount(0);
+            setShowHeartNextButton(false);
+            return;
+          }
+          setRoseBloomed(true);
+          setShowHeartNextButton(false);
+          setHeartSequenceCount(0);
+          setEmotionalLine("");
+          setFlyingHeartActive(false);
+          setMaryamHeartExploding(false);
+          const timeouts = [];
+          const scheduleTimeout = (fn, delay) => {
+            const id = setTimeout(fn, delay);
+            timeouts.push(id);
+          };
+          const runSequenceForIndex = (index) => {
+            if (index >= emotionalHeartLines.length) {
+              setShowHeartNextButton(true);
+              return;
+            }
+            setHeartSequenceCount(index + 1);
+            setEmotionalLine("");
+            setFlyingHeartActive(true);
+            setMaryamHeartExploding(false);
+            scheduleTimeout(() => {
+              setFlyingHeartActive(false);
+              setMaryamHeartExploding(true);
+              scheduleTimeout(() => {
+                setMaryamHeartExploding(false);
+                setEmotionalLine(emotionalHeartLines[index]);
+                const typingDuration = emotionalHeartLines[index].length * 60;
+                if (index === emotionalHeartLines.length - 1) {
+                  scheduleTimeout(() => {
+                    setShowHeartNextButton(true);
+                  }, typingDuration + 5000);
+                } else {
+                  scheduleTimeout(
+                    () => runSequenceForIndex(index + 1),
+                    typingDuration + 5000,
+                  );
+                }
+              }, 700);
+            }, 8000);
+          };
+          runSequenceForIndex(0);
+          return () => {
+            timeouts.forEach((id) => clearTimeout(id));
+          };
+        }, [step]);
+
+        const launchFirework = () => {
+          const newFirework = {
+            id: Date.now(),
+            x: Math.random() * 80 + 10,
+            y: Math.random() * 40 + 10,
+          };
+          setFireworks((prev) => [...prev, newFirework]);
+          setTimeout(() => {
+            setFireworks((prev) => prev.filter((f) => f.id !== newFirework.id));
+          }, 2000);
+        };
+
+        const startHatFireworks = () => {
+          for (let i = 0; i < 6; i++) {
+            setTimeout(() => {
+              launchFirework();
+            }, i * 250);
+          }
+        };
+
+        const startConfetti = (options = {}) => {
+          const { count = 60, duration = 1.5 } = options;
+          const colors = [
+            "#f97316",
+            "#ec4899",
+            "#22c55e",
+            "#3b82f6",
+            "#eab308",
+          ];
+          const baseId = Date.now();
+          const pieces = Array.from({ length: count }).map((_, index) => ({
+            id: baseId + index,
+            left: Math.random() * 100,
+            delay: Math.random() * 0.5,
+            color: colors[index % colors.length],
+            duration,
+          }));
+          setConfettiPieces(pieces);
+          setShowConfetti(true);
+          setTimeout(() => setShowConfetti(false), duration * 1000);
+        };
+
+        const triggerBlast = () => {
+          const colors = [
+            "#ff0000",
+            "#00ff00",
+            "#0000ff",
+            "#ffff00",
+            "#ff00ff",
+            "#00ffff",
+            "#ffa500",
+            "#800080",
+          ];
+          const baseId = Date.now() + Math.random(); // Ensure unique IDs even if called rapidly
+          const particles = Array.from({ length: 150 }).map((_, i) => ({
+            id: baseId + i,
+            tx: (Math.random() - 0.5) * 1000 + "px",
+            ty: (Math.random() - 0.5) * 1000 + "px",
+            color: colors[i % colors.length],
+          }));
+          setBlastParticles((prev) => [...prev, ...particles]);
+          setTimeout(() => {
+            setBlastParticles((prev) =>
+              prev.filter((p) => !particles.some((newP) => newP.id === p.id)),
+            );
+          }, 5000);
+        };
+
+        const triggerStreamers = () => {
+          const colors = [
+            "#ff0000",
+            "#00ff00",
+            "#0000ff",
+            "#ffff00",
+            "#ff00ff",
+            "#00ffff",
+            "#ffa500",
+            "#800080",
+          ];
+          const baseId = Date.now() + Math.random();
+          const newStreamers = Array.from({ length: 60 }).map((_, i) => ({
+            id: baseId + i,
+            left: Math.random() * 100,
+            color: colors[i % colors.length],
+            delay: Math.random() * 2,
+            duration: 6 + Math.random() * 4, // Slower: 6-10s
+          }));
+          setStreamers((prev) => [...prev, ...newStreamers]);
+          setTimeout(() => {
+            setStreamers((prev) =>
+              prev.filter((s) => !newStreamers.some((ns) => ns.id === s.id)),
+            );
+          }, 12000);
+        };
+
+        const blowCandles = () => {
+          setIsBlowing(true);
+          setShowSmoke(true);
+          setTimeout(() => {
+            setCandlesBlown(true);
+            setIsBlowing(false);
+            triggerBlast();
+            setTimeout(triggerBlast, 2000);
+            setTimeout(triggerBlast, 4000);
+            setTimeout(triggerStreamers, 4500); // Start falling shortly after 3rd blast
+            setTimeout(triggerStreamers, 9500); // Second wave of streamers
+            setTimeout(triggerBlast, 13000); // Final blast after streamers
+            setTimeout(() => setShowCakeButton(true), 15000); // Show button
+          }, 800);
+          setTimeout(() => {
+            setShowSmoke(false);
+          }, 2600);
+          startConfetti();
+        };
+
+        const handleCandleTap = (idx) => {
+          if (candlesBlown) return;
+          const allLit = candles.every((c) => c);
+          if (allLit) {
+            blowCandles();
+            return;
+          }
+          const newCandles = [...candles];
+          newCandles[idx] = true;
+          setCandles(newCandles);
+        };
+
+        const handleSmokeBombClick = (color) => {
+          if (step !== 12.5) return;
+          if (color === "red") setRedBombActive(true);
+          if (color === "green") setGreenBombActive(true);
+          if (color === "blue") setBlueBombActive(true);
+          if (!smokeMessageStarted) {
+            setSmokeMessageStarted(true);
+          }
+          triggerBlast();
+        };
+
+        const handleMorePetalsClick = () => {
+          setPetalClickCount((prev) => {
+            const next = prev + 1;
+            setCurrentPetalEmojiIndex(next % petalEmojis.length);
+            return next;
+          });
+        };
+
+        const handlePlanetConnect = (index) => {
+          setPlanetConnections((prev) => {
+            if (prev[index]) return prev;
+            const firstUnconnectedIndex = prev.findIndex((p) => !p);
+            if (firstUnconnectedIndex !== -1 && index !== firstUnconnectedIndex)
+              return prev;
+            const updated = [...prev];
+            updated[index] = true;
+            return updated;
+          });
+        };
+
+        const nextStep = () =>
+          setStep((prev) => {
+            if (prev === 13) return 13.5;
+            if (prev === 13.5) return 14;
+            return Math.floor(prev + 1);
+          });
+
+        const handleOpenSurprise = () => {
+          if (step !== 18) {
+            setStep(18);
+          }
+          if (!musicStarted && audioRef.current) {
+            audioRef.current
+              .play()
+              .then(() => {
+                setMusicStarted(true);
+              })
+              .catch(() => {});
+          }
+          if (storyIndex === -1) {
+            setStoryIndex(0);
+          }
+        };
+
+        const handleNextQuote = () => {
+          setStoryIndex((prev) => {
+            const next = prev + 1;
+            if (next >= storyQuotes.length) return prev;
+            return next;
+          });
+        };
+
+        const handleToggleLetter = () => {
+          setIsLetterOpen((prev) => !prev);
+        };
+
+        const connectedPlanets = planetConnections.filter((p) => p).length;
+        const ropeProgress =
+          connectedPlanets <= 1
+            ? 0
+            : (connectedPlanets - 1) / (planetEmojis.length - 1);
+
+        return (
+          <div className="min-h-screen w-full flex flex-col items-center justify-center p-4 text-pink-700 overflow-hidden relative font-playfair">
+            <audio
+              ref={audioRef}
+              src="bg-music.mp3"
+              className="hidden"
+              loop
+              preload="auto"
+            />
+
+            {balloonGroups.map((group) => (
+              <div
+                key={group.key}
+                className="absolute inset-0 pointer-events-none z-0 overflow-hidden"
+              >
+                {group.items.map((balloon) => (
+                  <div
+                    key={balloon.id}
+                    className={`balloon ${group.className}`}
+                    style={{
+                      left: `${balloon.left}%`,
+                      width: `${balloon.size}px`,
+                      height: `${balloon.size * 1.4}px`,
+                      animationDuration: `${balloon.duration}s`,
+                      animationDelay: `${balloon.delay}s`,
+                    }}
+                  >
+                    <div className="balloon-string" />
+                  </div>
+                ))}
+              </div>
+            ))}
+
+            <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden">
+              {floatingPetals.map((petal) => (
+                <div
+                  key={petal.id}
+                  className="floating-petal"
+                  style={{
+                    left: `${petal.left}%`,
+                    animationDuration: `${petal.duration}s`,
+                    animationDelay: `${petal.delay}s`,
+                  }}
+                >
+                  <span
+                    style={{
+                      fontSize: petal.size,
+                      filter: "drop-shadow(0 0 6px rgba(248, 250, 252, 0.85))",
+                    }}
+                  >
+                    {petal.emoji}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <div className="absolute inset-0 pointer-events-none z-60 overflow-hidden">
+              {showLeftHeart && (
+                <div className="heart-slot-left">
+                  <div
+                    className="heart-floating"
+                    onAnimationEnd={() => {
+                      setShowLeftHeart(false);
+                      setLeftHeartExploding(true);
+                      setTimeout(() => {
+                        setLeftHeartExploding(false);
+                        setShowAzkeelText(true);
+                      }, 700);
+                    }}
+                  >
+                    <span className="text-4xl md:text-5xl">❤️</span>
+                  </div>
+                </div>
+              )}
+              {leftHeartExploding && (
+                <div className="heart-slot-left">
+                  <div className="heart-explode">
+                    <span className="heart-piece heart-piece-0">❤️</span>
+                    <span className="heart-piece heart-piece-1">❤️</span>
+                    <span className="heart-piece heart-piece-2">❤️</span>
+                    <span className="heart-piece heart-piece-3">❤️</span>
+                  </div>
+                </div>
+              )}
+              <div className="heart-slot-center">
+                <div className="heart-floating center">
+                  <span className="heart-center-inner text-4xl md:text-5xl">
+                    ❤️
+                  </span>
+                </div>
+              </div>
+              {showRightHeart && (
+                <div className="heart-slot-right">
+                  <div
+                    className="heart-floating"
+                    onAnimationEnd={() => {
+                      setShowRightHeart(false);
+                      setRightHeartExploding(true);
+                      setTimeout(() => {
+                        setRightHeartExploding(false);
+                        setShowMishuText(true);
+                      }, 700);
+                    }}
+                  >
+                    <span className="text-4xl md:text-5xl">❤️</span>
+                  </div>
+                </div>
+              )}
+              {rightHeartExploding && (
+                <div className="heart-slot-right">
+                  <div className="heart-explode">
+                    <span className="heart-piece heart-piece-0">❤️</span>
+                    <span className="heart-piece heart-piece-1">❤️</span>
+                    <span className="heart-piece heart-piece-2">❤️</span>
+                    <span className="heart-piece heart-piece-3">❤️</span>
+                  </div>
+                </div>
+              )}
+              {showAzkeelText && (
+                <div className="heart-name-left">
+                  <span className="text-pink-600 text-2xl md:text-3xl tracking-[0.25em] uppercase drop-shadow-lg">
+                    Azkeel
+                  </span>
+                </div>
+              )}
+              {showMishuText && (
+                <div className="heart-name-right">
+                  <span className="text-pink-600 text-2xl md:text-3xl tracking-[0.25em] uppercase drop-shadow-lg">
+                    Mishu
+                  </span>
+                </div>
+              )}
+            </div>
+
+            <div className="absolute inset-0 pointer-events-none z-10">
+              {fireworks.map((fw) => (
+                <div
+                  key={fw.id}
+                  className="absolute pointer-events-none"
+                  style={{ top: `${fw.y}%`, left: `${fw.x}%` }}
+                >
+                  <div className="animate-ping bg-yellow-400 w-12 h-12 rounded-full blur-xl" />
+                  <Sparkles
+                    className="text-yellow-500 animate-bounce"
+                    size={24}
+                  />
+                </div>
+              ))}
+            </div>
+
+            {showConfetti && (
+              <div className="absolute inset-0 pointer-events-none z-20 overflow-hidden">
+                {confettiPieces.map((piece) => (
+                  <div
+                    key={piece.id}
+                    className="confetti-piece"
+                    style={{
+                      left: `${piece.left}%`,
+                      top: "-10%",
+                      backgroundColor: piece.color,
+                      animation: `confetti-fall ${
+                        piece.duration || 1.5
+                      }s ease-out ${piece.delay}s forwards`,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
+            {streamers.length > 0 && (
+              <div className="absolute inset-0 pointer-events-none z-40 overflow-hidden">
+                {streamers.map((s) => (
+                  <div
+                    key={s.id}
+                    className="streamer"
+                    style={{
+                      left: `${s.left}%`,
+                      backgroundColor: s.color,
+                      animation: `streamer-fall ${s.duration}s ease-out ${s.delay}s forwards`,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+
+            {blastParticles.length > 0 && (
+              <div className="absolute inset-0 pointer-events-none z-50 flex items-center justify-center overflow-hidden">
+                {blastParticles.map((particle) => (
+                  <div
+                    key={particle.id}
+                    className="blast-particle"
+                    style={{
+                      "--tx": particle.tx,
+                      "--ty": particle.ty,
+                      backgroundColor: particle.color,
+                    }}
+                  />
+                ))}
+              </div>
+            )}
+            {isLetterOpen && (
+              <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm p-4">
+                <div className="max-w-lg w-full rounded-3xl royal-panel border border-amber-400/80 shadow-[0_0_50px_rgba(250,204,21,0.7)] p-6 space-y-4 fade-in-up text-left">
+                  <h3 className="text-2xl font-great-vibes text-amber-300">
+                    Meri dil se likhi chhoti si chithi
+                  </h3>
+                  <p className="text-sm md:text-base leading-relaxed text-pink-500">
+                    <Typewriter
+                      text="Meri pyaari Maryam, tum mere liye Allah ka wo tohfa ho jiski koi qeemat nahi. Tumhari hansi meri dunya hai aur tumhari khushi mera sukoon. Happy Birthday my life, my soulmate! Hamesha khush raho mere saath... Love you Forever! ❤️"
+                      delay={50}
+                    />
+                  </p>
+                  <div className="flex justify-end pt-2">
+                    <button
+                      onClick={handleToggleLetter}
+                      className="px-5 py-2 rounded-full bg-gradient-to-r from-red-600 to-amber-500 text-white text-sm font-semibold shadow-lg hover:scale-105 transition-transform"
+                    >
+                      Close
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            <div
+              key={step}
+              className="royal-panel royal-panel-animated backdrop-blur-xl p-8 rounded-3xl w-[480px] max-w-[90vw] text-center mx-auto relative z-30 transition-all duration-500 fade-in-up mt-24"
+            >
+              {step === 1 && (
+                <div className="space-y-4">
+                  <h1 className="text-3xl font-bold text-pink-600">
+                    <Typewriter text="Welcome meri Guddi 😘" />
+                  </h1>
+                </div>
+              )}
+
+              {step === 1.5 && (
+                <div className="space-y-4">
+                  <h1 className="text-2xl font-semibold">
+                    <Typewriter
+                      text="Yeah Special meri Jan k leyah😘"
+                      onComplete={() => setShowChaleinButton(true)}
+                    />
+                  </h1>
+                  {showChaleinButton && (
+                    <button
+                      onClick={nextStep}
+                      className="mt-4 px-6 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600 animate-bounce"
+                    >
+                      Chalein?
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {step === 2 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold">
+                    <Typewriter
+                      text="Maryam, do you love me? ❤️"
+                      onComplete={() => {
+                        setTimeout(() => setShowYesButton(true), 1000);
+                        setTimeout(() => setShowNoButton(true), 1000);
+                      }}
+                    />
+                  </h2>
+                  <div className="flex justify-center gap-4">
+                    <button
+                      onClick={() => {
+                        setNoLoveMessage(false);
+                        nextStep();
+                      }}
+                      disabled={noLoveMessage}
+                      className={`px-8 py-3 rounded-xl shadow-lg transition-all duration-1000 text-white ${
+                        showYesButton
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4 pointer-events-none"
+                      } ${
+                        noLoveMessage
+                          ? "bg-green-300 cursor-not-allowed"
+                          : "bg-green-500 hover:scale-105"
+                      }`}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={() => setNoLoveMessage(true)}
+                      className={`px-8 py-3 bg-gray-400 text-white rounded-xl shadow-lg transition-all duration-1000 ${
+                        showNoButton
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4 pointer-events-none"
+                      }`}
+                    >
+                      No
+                    </button>
+                  </div>
+                  {noLoveMessage && (
+                    <p className="mt-4 text-sm font-bold text-red-600">
+                      <Typewriter text="Mjy pta tha k ap pyar ni krti 😢" />
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {step === 3 && (
+                <div className="space-y-4">
+                  <Heart
+                    className="mx-auto text-red-500 animate-pulse"
+                    size={48}
+                  />
+                  <h2 className="text-2xl font-bold italic">
+                    <Typewriter text="Love you too meri Jan k tootay 😘😘😘" />
+                  </h2>
+                </div>
+              )}
+
+              {step === 4 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold italic">
+                    <Typewriter
+                      text="Meri Chuhi 🐁 Ka birthday ha aj?🎂"
+                      onComplete={() => {
+                        setTimeout(() => setShowYesButton(true), 1000);
+                        setTimeout(() => setShowNoButton(true), 1000);
+                      }}
+                    />
+                  </h2>
+                  <div className="flex justify-center gap-4">
+                    <button
+                      onClick={() => {
+                        setNoBirthdayMessage(false);
+                        nextStep();
+                      }}
+                      disabled={noBirthdayMessage}
+                      className={`px-8 py-3 rounded-xl shadow-lg text-white transition-all duration-1000 ${
+                        showYesButton
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4 pointer-events-none"
+                      } ${
+                        noBirthdayMessage
+                          ? "bg-pink-300 cursor-not-allowed"
+                          : "bg-pink-500 hover:scale-105"
+                      }`}
+                    >
+                      Yes
+                    </button>
+                    <button
+                      onClick={() => setNoBirthdayMessage(true)}
+                      className={`px-8 py-3 bg-gray-400 text-white rounded-xl shadow-lg transition-all duration-1000 ${
+                        showNoButton
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4 pointer-events-none"
+                      }`}
+                    >
+                      No
+                    </button>
+                  </div>
+                  {noBirthdayMessage && (
+                    <p className="mt-4 text-sm font-bold text-red-600">
+                      <Typewriter text="Acha rehny doo phir Allah Hafiz 😢" />
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {step === 5 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold">
+                    <Typewriter text="Mashallah, meri Boogi🐒 aj too bohat special din ha" />
+                  </h2>
+                </div>
+              )}
+
+              {step === 6 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold leading-relaxed">
+                    <Typewriter
+                      text="Aj k din meri janam ko meray leyah peda keyah gya tha? 💗"
+                      onComplete={() =>
+                        setTimeout(() => setShowGHaanButton(true), 1000)
+                      }
+                    />
+                  </h2>
+                  <button
+                    onClick={() => setStep(6.5)}
+                    className={`text-pink-400 font-bold hover:underline transition-all duration-1000 ${
+                      showGHaanButton
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4 pointer-events-none"
+                    }`}
+                  >
+                    G Haan...
+                  </button>
+                </div>
+              )}
+
+              {step === 6.5 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold">
+                    <Typewriter text="Thank God, Love you bohat bohat bohat Sara ❤️" />
+                  </h2>
+                </div>
+              )}
+
+              {step === 7 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-medium">
+                    <Typewriter
+                      text="Jani ma apka birthday ap k sath celebrate krna chata tha 😔"
+                      onComplete={() =>
+                        setTimeout(() => setShowKasayButton(true), 3000)
+                      }
+                    />
+                  </h2>
+                  <button
+                    onClick={() => setStep(7.5)}
+                    className={`px-8 py-2 border-2 border-pink-500 rounded-lg transition-all duration-1000 ${
+                      showKasayButton
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4 pointer-events-none"
+                    }`}
+                  >
+                    kasay? 🤔
+                  </button>
+                </div>
+              )}
+
+              {step === 7.5 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-medium">
+                    <Typewriter
+                      text="physically mil kr too celebrate ni kr sakty 😔"
+                      onComplete={() =>
+                        setTimeout(() => setShowLekinButton(true), 1000)
+                      }
+                    />
+                  </h2>
+                  <button
+                    onClick={nextStep}
+                    className={`px-8 py-2 border-2 border-pink-500 rounded-lg transition-all duration-1000 ${
+                      showLekinButton
+                        ? "opacity-100 translate-y-0"
+                        : "opacity-0 translate-y-4 pointer-events-none"
+                    }`}
+                  >
+                    Lekin...
+                  </button>
+                </div>
+              )}
+
+              {step === 8 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold">
+                    <Typewriter
+                      text="Mishu Virtually celebrate karty hn meri Jan 😘 kro gi celebrate mery sath?"
+                      onComplete={() =>
+                        setTimeout(() => setShowJiBilkulButton(true), 1000)
+                      }
+                    />
+                  </h2>
+                  <div className="flex justify-center gap-4">
+                    <button
+                      onClick={nextStep}
+                      className={`px-8 py-3 bg-pink-500 text-white rounded-xl transition-all duration-1000 ${
+                        showJiBilkulButton
+                          ? "opacity-100 translate-y-0"
+                          : "opacity-0 translate-y-4 pointer-events-none"
+                      }`}
+                    >
+                      Ji Bilkul! ❤️
+                    </button>
+                  </div>
+                </div>
+              )}
+
+              {step === 9 && (
+                <div className="space-y-4">
+                  <h2 className="text-3xl font-bold text-pink-600">
+                    <Typewriter text="Thanks meri Rasmalai💞" />
+                  </h2>
+                </div>
+              )}
+
+              {step === 9.5 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-pink-600">
+                    Mishu, chalo apni choti si galaxy connect karein 🪐💫
+                  </h2>
+                  <p className="text-sm text-pink-500">
+                    Har planet pe pyaar se tap karo taake hamari galaxy full
+                    connect ho jaye ✨
+                  </p>
+                  <div className="relative">
+                    <div className="planet-connector-line-bg" />
+                    <div
+                      className="planet-connector-line-active"
+                      style={{ width: `${ropeProgress * 90}%` }}
+                    />
+                    <div className="flex justify-center gap-4 pb-4">
+                      {planetConnections.map((connected, index) => {
+                        const activeClass =
+                          planetActiveClasses[index] || planetActiveClasses[0];
+                        return (
+                          <div
+                            key={index}
+                            className={`flex flex-col items-center planet-swing-${
+                              index + 1
+                            }`}
+                            style={{ transformOrigin: "top center" }}
+                          >
+                            <div className="w-1 h-12 bg-red-500 rounded-full" />
+                            <button
+                              onClick={() => handlePlanetConnect(index)}
+                              className={`w-16 h-16 rounded-full border-4 flex items-center justify-center text-2xl shadow-md transition-all ${
+                                connected
+                                  ? activeClass
+                                  : "bg-gradient-to-br from-slate-100 to-slate-300 border-pink-300 text-slate-500"
+                              }`}
+                            >
+                              {planetEmojis[index]}
+                            </button>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  {planetConnections.every((p) => p) ? (
+                    <div className="space-y-3">
+                      <p className="text-green-600 font-bold text-lg">
+                        Waaah! Sab planets connect ho gaye, hamari galaxy ready
+                        hai 🌌
+                      </p>
+                      <button
+                        onClick={nextStep}
+                        className="px-8 py-2 bg-pink-500 text-white rounded-full hover:bg-pink-600"
+                      >
+                        Chalo aagay ✨
+                      </button>
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-500">
+                      Abhi bhi kuch baqi hai, har planet pe click karo taake
+                      connection complete ho jaye 💕
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {step === 10 && (
+                <div className="space-y-8 relative py-12">
+                  <div className="flex justify-around items-end relative h-32">
+                    <div className="relative">
+                      <div
+                        className={
+                          capOn
+                            ? "translate-x-3 -translate-y-1 rotate-3"
+                            : capFlying
+                              ? "animate-azkeel-walk"
+                              : ""
+                        }
+                        onAnimationEnd={() => {
+                          if (capFlying) {
+                            setCapFlying(false);
+                            setCapOn(true);
+                            startHatFireworks();
+                          }
+                        }}
+                      >
+                        <BoyCharacter armUp={capFlying || capOn} />
+                        {!capOn && (
+                          <CapHat
+                            className="absolute drop-shadow-lg"
+                            size={32}
+                            style={{
+                              top: 40,
+                              left: 52,
+                              transform: "rotate(-20deg)",
+                            }}
+                          />
+                        )}
+                      </div>
+                      {capOn && (
+                        <div
+                          key={petalClickCount}
+                          className="pointer-events-none absolute inset-0"
+                        >
+                          {[...Array(18)].map((_, i) => {
+                            const flower = petalEmojis[currentPetalEmojiIndex];
+                            const duration = 1.1 + Math.random() * 0.9;
+                            const delay = i * 0.08;
+                            return (
+                              <span
+                                key={i}
+                                style={{
+                                  position: "absolute",
+                                  left: "46px",
+                                  top: "40px",
+                                  animation: `petal-throw ${duration}s ease-out ${delay}s forwards`,
+                                }}
+                              >
+                                {flower}
+                              </span>
+                            );
+                          })}
+                        </div>
+                      )}
+                    </div>
+                    <div className="relative">
+                      <GirlCharacter
+                        className={
+                          capOn
+                            ? "-translate-x-3 -translate-y-1 -rotate-3"
+                            : capFlying
+                              ? "animate-maryam-step"
+                              : ""
+                        }
+                      />
+                      {capOn && (
+                        <CapHat
+                          className="absolute -top-8 left-1/2 drop-shadow-lg"
+                          size={48}
+                          style={{
+                            transform: "translateX(-36px) rotate(-10deg)",
+                          }}
+                        />
+                      )}
+                    </div>
+                  </div>
+                  <div className="mt-4 h-1 w-3/4 mx-auto bg-gradient-to-r from-pink-200 via-pink-300 to-pink-200 rounded-full opacity-70" />
+                  {!capOn ? (
+                    !capFlying ? (
+                      <div className="space-y-3">
+                        <p className="text-sm text-gray-500">
+                          <Typewriter
+                            text="Mishu dakho ma hath ma birthday cap leyah khara hu, agr apki ijazat ho too pehna du apko😘"
+                            onComplete={() => setCapTextComplete(true)}
+                          />
+                        </p>
+                        {showCapButton && (
+                          <button
+                            onClick={() => !capFlying && setCapFlying(true)}
+                            className="px-8 py-3 bg-yellow-400 text-yellow-900 rounded-full font-bold shadow-lg hover:bg-yellow-300 transition-transform hover:scale-105 disabled:opacity-60"
+                            disabled={capFlying}
+                          >
+                            GG Bilkal...
+                          </button>
+                        )}
+                      </div>
+                    ) : null
+                  ) : (
+                    <div className="space-y-3">
+                      {!showAskForMorePetals ? (
+                        <p className="text-xl font-bold text-pink-600">
+                          <Typewriter
+                            text="Mashallah, meri cute pyari c future wife bohat pyari lg rhi ha!😍, Thoray sy aur Phool phank sakta hu apni jan pr?😥"
+                            onComplete={() => setFirstPetalTextComplete(true)}
+                          />
+                        </p>
+                      ) : (
+                        <>
+                          <p className="text-xl font-bold text-pink-600">
+                            <Typewriter
+                              text="Mishu bohat pyari lg rhi ho, phool phank sakta hu apni jan pr 🥺"
+                              onComplete={() =>
+                                setSecondPetalTextComplete(true)
+                              }
+                            />
+                          </p>
+                          {secondPetalTextComplete &&
+                            (petalClickCount < 4 ? (
+                              <button
+                                onClick={handleMorePetalsClick}
+                                className="mt-2 px-6 py-2 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600"
+                              >
+                                Ok phanko Mery gudday
+                              </button>
+                            ) : (
+                              <button
+                                onClick={nextStep}
+                                className="mt-2 px-6 py-2 bg-pink-500 text-white rounded-full shadow-lg hover:bg-pink-600"
+                              >
+                                Chalo aagay chalein!
+                              </button>
+                            ))}
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {step === 11 && (
+                <div className="space-y-6">
+                  <h2 className="text-xl font-bold">Maryam candles jalao 🕯️</h2>
+                  <div className="flex justify-center gap-6 py-8">
+                    {candles.map((lit, i) => (
+                      <div
+                        key={i}
+                        onClick={() => handleCandleTap(i)}
+                        className="cursor-pointer flex flex-col items-center relative"
+                      >
+                        {lit && !candlesBlown && (
+                          <div
+                            className={`absolute bottom-[4.2rem] left-[15%] -translate-x-1/2 z-10 ${
+                              isBlowing
+                                ? "animate-flame-out"
+                                : "animate-flame-flicker"
+                            }`}
+                          >
+                            {/* Main Flame */}
+                            <div
+                              className="w-4 h-8 rounded-full"
+                              style={{
+                                background:
+                                  "radial-gradient(ellipse at bottom, rgba(255,255,200,1) 0%, rgba(255,200,0,0.8) 50%, rgba(255,100,0,0.5) 85%, transparent 100%)",
+                                borderRadius:
+                                  "50% 50% 50% 50% / 60% 60% 40% 40%",
+                                boxShadow:
+                                  "0 0 5px rgba(255, 165, 0, 0.5), 0 0 10px rgba(255, 69, 0, 0.3), 0 -5px 5px rgba(255, 215, 0, 0.3)",
+                                transformOrigin: "bottom center",
+                              }}
+                            />
+                            {/* Blue Core */}
+                            <div
+                              className="absolute bottom-0.5 left-1/2 -translate-x-1/2 w-1.5 h-2 rounded-full opacity-60"
+                              style={{
+                                background:
+                                  "radial-gradient(circle, rgba(0,0,255,0.5) 0%, transparent 100%)",
+                                filter: "blur(0.5px)",
+                              }}
+                            />
+                            {/* Wick glow */}
+                            <div
+                              className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 w-0.5 h-1.5 bg-black rounded-full opacity-40"
+                              style={{
+                                filter: "blur(0.5px)",
+                              }}
+                            />
+                          </div>
+                        )}
+                        <div
+                          className={`relative w-5 ${
+                            candlesBlown ? "h-5" : "h-16"
+                          } bg-gradient-to-b from-pink-100 via-pink-200 to-pink-400 rounded-t-3xl shadow-md flex items-end justify-center overflow-hidden transition-all duration-1000 ${
+                            candlesBlown ? "opacity-90" : ""
+                          }`}
+                        >
+                          <div
+                            className="absolute inset-0"
+                            style={{
+                              pointerEvents: "none",
+                              opacity: 0.4,
+                              backgroundImage:
+                                "repeating-linear-gradient(-45deg, rgba(255,255,255,0.85) 0, rgba(255,255,255,0.85) 3px, transparent 3px, transparent 6px)",
+                            }}
+                          />
+                          <div
+                            className="absolute -top-1 left-1/2 -translate-x-1/2 bg-gray-700 rounded-full"
+                            style={{ width: "2px", height: "8px" }}
+                          />
+                          {candlesBlown && showSmoke && (
+                            <>
+                              {[0, 1, 2].map((s) => (
+                                <div
+                                  key={s}
+                                  className="smoke-dot animate-smoke"
+                                  style={{
+                                    width: `${6 + s * 3}px`,
+                                    height: `${6 + s * 3}px`,
+                                    animationDelay: `${s * 0.18}s`,
+                                  }}
+                                />
+                              ))}
+                            </>
+                          )}
+                          <div className="w-full h-2 bg-pink-500/40" />
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                  {candles.every((c) => c) && !candlesBlown && (
+                    <p className="text-pink-600 font-bold animate-bounce">
+                      Ab phoonk maaro (Tap to Blow)!
+                    </p>
+                  )}
+                  {candlesBlown && (
+                    <div className="space-y-4">
+                      <p className="text-xl font-bold">
+                        Yaayyy! Happy Birthday meri Jan k Tootay🥰😘😘👏👏👏 🎉
+                      </p>
+                      <PartyPopper
+                        className="mx-auto text-yellow-500"
+                        size={32}
+                      />
+                      {showCakeButton && (
+                        <button
+                          onClick={nextStep}
+                          className="px-6 py-2 bg-pink-500 text-white rounded-full animate-bounce"
+                        >
+                          Cake Katein ab?
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {step === 12 && (
+                <div className="space-y-6 overflow-hidden">
+                  <div className="flex justify-around items-end h-32 mb-4">
+                    <BoyCharacter className={cakeCut ? "animate-bounce" : ""} />
+                    <div className="relative">
+                      <svg width="120" height="120" viewBox="0 0 100 100">
+                        {/* Base Plate */}
+                        <ellipse
+                          cx="50"
+                          cy="90"
+                          rx="45"
+                          ry="8"
+                          fill="#e5e5e5"
+                          stroke="#ccc"
+                        />
+
+                        {/* Tier 1 (Bottom) */}
+                        <rect
+                          x="15"
+                          y="65"
+                          width="70"
+                          height="25"
+                          rx="2"
+                          fill="#FFC0CB"
+                          stroke="#FF69B4"
+                          strokeWidth="1"
+                        />
+                        <path
+                          d="M15 65 Q25 75 35 65 T55 65 T75 65 T85 65"
+                          fill="none"
+                          stroke="#FFF"
+                          strokeWidth="2"
+                        />
+
+                        {/* Tier 2 (Middle) */}
+                        <rect
+                          x="25"
+                          y="45"
+                          width="50"
+                          height="20"
+                          rx="2"
+                          fill="#FF69B4"
+                          stroke="#FF1493"
+                          strokeWidth="1"
+                        />
+                        <path
+                          d="M25 45 Q37.5 55 50 45 T75 45"
+                          fill="none"
+                          stroke="#FFF"
+                          strokeWidth="2"
+                        />
+
+                        {/* Tier 3 (Top) */}
+                        <rect
+                          x="35"
+                          y="30"
+                          width="30"
+                          height="15"
+                          rx="2"
+                          fill="#FFC0CB"
+                          stroke="#FF69B4"
+                          strokeWidth="1"
+                        />
+                        <path
+                          d="M35 30 Q42.5 35 50 30 T65 30"
+                          fill="none"
+                          stroke="#FFF"
+                          strokeWidth="2"
+                        />
+
+                        {/* Topper/Decorations */}
+                        <circle cx="40" cy="30" r="2" fill="orange" />
+                        <circle cx="60" cy="30" r="2" fill="orange" />
+
+                        {/* Candle with Flame */}
+                        <rect
+                          x="48"
+                          y="15"
+                          width="4"
+                          height="15"
+                          fill="#FAFAFA"
+                          stroke="#E0E0E0"
+                          strokeWidth="0.5"
+                        />
+                        <line
+                          x1="50"
+                          y1="15"
+                          x2="50"
+                          y2="12"
+                          stroke="#555"
+                          strokeWidth="1"
+                        />
+                        <g
+                          style={{
+                            animation: "candle-flicker 1s infinite alternate",
+                            transformOrigin: "50px 12px",
+                          }}
+                        >
+                          <path
+                            d="M50 12 Q47 8 50 2 Q53 8 50 12 Z"
+                            fill="#FF4500"
+                          />
+                          <path
+                            d="M50 11 Q48 8 50 4 Q52 8 50 11 Z"
+                            fill="#FFD700"
+                          />
+                        </g>
+
+                        {/* Text */}
+                        <text
+                          x="50"
+                          y="80"
+                          fontSize="5"
+                          textAnchor="middle"
+                          fill="#8B0000"
+                          fontWeight="bold"
+                        >
+                          Happy Birthday
+                        </text>
+                        <text
+                          x="50"
+                          y="86"
+                          fontSize="5"
+                          textAnchor="middle"
+                          fill="#8B0000"
+                          fontWeight="bold"
+                        >
+                          Maryam
+                        </text>
+
+                        {cakeCut && (
+                          <line
+                            x1="50"
+                            y1="20"
+                            x2="50"
+                            y2="90"
+                            stroke="#FFF"
+                            strokeWidth="2"
+                          />
+                        )}
+                      </svg>
+                    </div>
+                    <div
+                      className={`relative transition-all duration-500 ${cakeCut ? "-translate-x-4" : ""}`}
+                    >
+                      <GirlCharacter />
+                      {capOn && (
+                        <CapHat
+                          className="absolute -top-8 left-1/2 drop-shadow-lg"
+                          size={48}
+                          style={{
+                            transform: "translateX(-36px) rotate(-10deg)",
+                          }}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {!showKnife && !cakeCut && (
+                    <button
+                      onClick={() => setShowKnife(true)}
+                      className="px-6 py-2 bg-blue-500 text-white rounded-lg"
+                    >
+                      Churi uthao 🔪
+                    </button>
+                  )}
+
+                  {showKnife && !cakeCut && (
+                    <div
+                      className="cursor-pointer animate-pulse"
+                      onClick={() => setCakeCut(true)}
+                    >
+                      <p className="text-sm font-bold text-gray-500">
+                        Tap on cake to cut!
+                      </p>
+                      <span className="text-4xl">🔪</span>
+                    </div>
+                  )}
+
+                  {cakeCut && (
+                    <div className="space-y-4">
+                      <p className="font-bold text-pink-600">
+                        Happy Birthday Meri Guddi🎂🎂🎂😘😘😍🥰🥰😘
+                      </p>
+                      <div className="flex flex-col gap-2">
+                        <p className="text-sm italic"></p>
+                        <button
+                          onClick={() => setStep(12.5)}
+                          className="mt-4 px-6 py-2 bg-pink-500 text-white rounded-full"
+                        >
+                          Aagay...
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {step === 12.5 && (
+                <div className="flex flex-col items-center justify-center min-h-[60vh] space-y-6 relative overflow-hidden w-full">
+                  <div className="relative w-full max-w-md mx-auto text-center space-y-3">
+                    <h2 className="text-2xl font-bold text-pink-600">
+                      <Typewriter text="Hr color pr click kro mishu 😍" />
+                    </h2>
+                    <p className="text-sm text-gray-600"></p>
+                  </div>
+
+                  {(redBombActive || greenBombActive || blueBombActive) && (
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[260px] flex justify-center">
+                      <div className="w-[360px] h-full bg-gradient-to-t from-gray-700/40 via-gray-400/20 to-transparent blur-3xl" />
+                    </div>
+                  )}
+
+                  <div className="flex items-end justify-center gap-8 mt-4">
+                    <div className="relative flex flex-col items-center">
+                      <div
+                        className="smoke-bomb"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 30% 30%, #fecaca, #b91c1c)",
+                        }}
+                        onClick={() => handleSmokeBombClick("red")}
+                      >
+                        <span className="smoke-bomb-label">Red</span>
+                      </div>
+                      {redBombActive && (
+                        <div className="smoke-trail">
+                          {Array.from({ length: 32 }).map((_, i) => (
+                            <div
+                              key={i}
+                              className="smoke-dot animate-smoke"
+                              style={{
+                                width: `${12 + i * 1.1}px`,
+                                height: `${12 + i * 1.1}px`,
+                                background:
+                                  "radial-gradient(circle, rgba(248,113,113,0.9), rgba(248,113,113,0.12))",
+                                animationDelay: `${i * 0.14}s`,
+                                filter: "blur(16px)",
+                                "--dx": `${(i - 15.5) * 2.2}px`,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="relative flex flex-col items-center">
+                      <div
+                        className="smoke-bomb"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 30% 30%, #bbf7d0, #15803d)",
+                        }}
+                        onClick={() => handleSmokeBombClick("green")}
+                      >
+                        <span className="smoke-bomb-label">Green</span>
+                      </div>
+                      {greenBombActive && (
+                        <div className="smoke-trail">
+                          {Array.from({ length: 32 }).map((_, i) => (
+                            <div
+                              key={i}
+                              className="smoke-dot animate-smoke"
+                              style={{
+                                width: `${12 + i * 1.1}px`,
+                                height: `${12 + i * 1.1}px`,
+                                background:
+                                  "radial-gradient(circle, rgba(74,222,128,0.9), rgba(74,222,128,0.12))",
+                                animationDelay: `${i * 0.14}s`,
+                                filter: "blur(16px)",
+                                "--dx": `${(i - 15.5) * 2.2}px`,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    <div className="relative flex flex-col items-center">
+                      <div
+                        className="smoke-bomb"
+                        style={{
+                          background:
+                            "radial-gradient(circle at 30% 30%, #bfdbfe, #1d4ed8)",
+                        }}
+                        onClick={() => handleSmokeBombClick("blue")}
+                      >
+                        <span className="smoke-bomb-label">Blue</span>
+                      </div>
+                      {blueBombActive && (
+                        <div className="smoke-trail">
+                          {Array.from({ length: 32 }).map((_, i) => (
+                            <div
+                              key={i}
+                              className="smoke-dot animate-smoke"
+                              style={{
+                                width: `${12 + i * 1.1}px`,
+                                height: `${12 + i * 1.1}px`,
+                                background:
+                                  "radial-gradient(circle, rgba(96,165,250,0.9), rgba(96,165,250,0.12))",
+                                animationDelay: `${i * 0.14}s`,
+                                filter: "blur(16px)",
+                                "--dx": `${(i - 15.5) * 2.2}px`,
+                              }}
+                            />
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {smokeMessageStarted && (
+                    <div className="mt-10 max-w-md mx-auto bg-white/90 rounded-2xl shadow-xl border border-pink-100 px-6 py-4">
+                      <p className="text-base font-semibold text-pink-700 leading-relaxed">
+                        <Typewriter
+                          text="Janam din bohat bohat mubarak meri shehzadi ko. Aj k din sirf ap pedah ni howi balkay aj k din Allah na meri zindagi ka maksad aur meray jeenay ki wajah banai meray leyah. ❤️"
+                          delay={60}
+                          onComplete={() => setShowSmokeNextButton(true)}
+                        />
+                      </p>
+                    </div>
+                  )}
+
+                  {smokeMessageStarted && showSmokeNextButton && (
+                    <button
+                      onClick={nextStep}
+                      className="mt-6 px-8 py-3 bg-pink-500 text-white rounded-full font-bold shadow-lg hover:bg-pink-600 animate-bounce"
+                    >
+                      Aagay chalein →
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {step === 13 && (
+                <div className="space-y-8">
+                  <h2 className="text-2xl font-bold text-pink-700">
+                    <Typewriter
+                      text="Yeah phool Specially meri Shehzadi k leyah 🌹"
+                      delay={60}
+                    />
+                  </h2>
+                  <div className="flex justify-center">
+                    <div className="w-40 h-52 flex items-center justify-center">
+                      <svg
+                        viewBox="0 0 80 120"
+                        className="animate-bloom"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          className="rose-stem"
+                          d="M40 110 Q42 90 38 70 Q42 50 40 30"
+                          stroke="#16a34a"
+                          strokeWidth="2.5"
+                          fill="none"
+                        />
+                        <path
+                          className="rose-leaf rose-leaf-left"
+                          d="M38 78 Q26 72 30 60 Q36 66 38 78Z"
+                          fill="#16a34a"
+                        />
+                        <path
+                          className="rose-leaf rose-leaf-right"
+                          d="M42 86 Q54 80 50 68 Q44 74 42 86Z"
+                          fill="#16a34a"
+                        />
+                        <circle
+                          className="rose-petal rose-petal-outer"
+                          cx="40"
+                          cy="28"
+                          r="10"
+                          fill="#be123c"
+                        />
+                        <circle
+                          className="rose-petal rose-petal-middle"
+                          cx="38"
+                          cy="24"
+                          r="7"
+                          fill="#e11d48"
+                        />
+                        <circle
+                          className="rose-petal rose-petal-inner"
+                          cx="42"
+                          cy="22"
+                          r="4"
+                          fill="#fecaca"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                  <p className="text-sm text-pink-500">
+                    <Typewriter
+                      text="Mishu ap sirf meri jan ni balkay mery rooh ka skoon B ho. 💕"
+                      delay={60}
+                      onComplete={() => setFlowerLineComplete(true)}
+                    />
+                  </p>
+                  {flowerLineComplete && (
+                    <button
+                      onClick={nextStep}
+                      className="px-8 py-3 bg-pink-500 text-white rounded-full font-bold shadow-lg hover:bg-pink-600"
+                    >
+                      Aagay chalein 🌹
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {step === 13.5 && (
+                <div className="space-y-6 relative overflow-hidden">
+                  <h2 className="text-2xl font-bold text-pink-700">
+                    Mishu yeah dil sirf ap k leyah darakta ha ❤️
+                  </h2>
+                  <div className="flex items-center justify-between gap-4">
+                    <div className="flex-1 flex justify-start">
+                      <div className="w-32 h-40 flex items-center justify-center">
+                        <svg
+                          viewBox="0 0 80 120"
+                          className="animate-bloom"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            className="rose-stem"
+                            d="M40 110 Q42 90 38 70 Q42 50 40 30"
+                            stroke="#16a34a"
+                            strokeWidth="2.5"
+                            fill="none"
+                          />
+                          <path
+                            className="rose-leaf rose-leaf-left"
+                            d="M38 78 Q26 72 30 60 Q36 66 38 78Z"
+                            fill="#16a34a"
+                          />
+                          <path
+                            className="rose-leaf rose-leaf-right"
+                            d="M42 86 Q54 80 50 68 Q44 74 42 86Z"
+                            fill="#16a34a"
+                          />
+                          <circle
+                            className="rose-petal rose-petal-outer"
+                            cx="40"
+                            cy="28"
+                            r="10"
+                            fill="#be123c"
+                          />
+                          <circle
+                            className="rose-petal rose-petal-middle"
+                            cx="38"
+                            cy="24"
+                            r="7"
+                            fill="#e11d48"
+                          />
+                          <circle
+                            className="rose-petal rose-petal-inner"
+                            cx="42"
+                            cy="22"
+                            r="4"
+                            fill="#fecaca"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+                    <div className="flex-1 flex justify-center">
+                      <div className="relative -ml-6 w-32 h-32 rounded-full bg-gradient-to-br from-pink-500 via-rose-500 to-red-600 shadow-[0_0_35px_rgba(244,63,94,0.7)] flex flex-col items-center justify-center gap-1">
+                        <span className="text-3xl">❤️</span>
+                        <span
+                          className="text-white text-xl font-bold tracking-wide"
+                          style={{
+                            animation: "heart-beat 2.6s ease-in-out infinite",
+                          }}
+                        >
+                          Maryam
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  {flyingHeartActive && (
+                    <div
+                      key={heartSequenceCount}
+                      className="maryam-flying-heart"
+                    >
+                      ❤️
+                    </div>
+                  )}
+                  {maryamHeartExploding && (
+                    <div className="maryam-flying-heart">
+                      <div className="heart-explode">
+                        <span className="heart-piece heart-piece-0">❤️</span>
+                        <span className="heart-piece heart-piece-1">❤️</span>
+                        <span className="heart-piece heart-piece-2">❤️</span>
+                        <span className="heart-piece heart-piece-3">❤️</span>
+                      </div>
+                    </div>
+                  )}
+                  {emotionalLine && (
+                    <p className="mt-6 text-sm text-pink-600 leading-relaxed max-w-xs mx-auto">
+                      <Typewriter
+                        key={heartSequenceCount}
+                        text={emotionalLine}
+                        delay={60}
+                      />
+                    </p>
+                  )}
+                  {showHeartNextButton && (
+                    <button
+                      onClick={nextStep}
+                      className="mt-6 px-8 py-3 bg-pink-500 text-white rounded-full font-bold shadow-lg hover:bg-pink-600"
+                    >
+                      Next step ❤️
+                    </button>
+                  )}
+                </div>
+              )}
+
+              {step === 14 && (
+                <div className="space-y-8">
+                  <h2 className="text-2xl font-bold">
+                    mishu love you yar 🥺, mjy hug kro
+                  </h2>
+                  <div className="flex justify-center items-center h-40 relative">
+                    <div
+                      className={`hug-character ${
+                        step === 14 && (isPressing || isHugged)
+                          ? "hug-character-boy-active"
+                          : ""
+                      }`}
+                    >
+                      <BoyCharacter />
+                    </div>
+                    <div
+                      className={`hug-character ${
+                        step === 14 && (isPressing || isHugged)
+                          ? "hug-character-girl-active"
+                          : ""
+                      }`}
+                    >
+                      <div className="relative">
+                        <GirlCharacter />
+                        {capOn && (
+                          <CapHat
+                            className="absolute -top-8 left-1/2 drop-shadow-lg"
+                            size={48}
+                            style={{
+                              transform: "translateX(-36px) rotate(-10deg)",
+                            }}
+                          />
+                        )}
+                      </div>
+                    </div>
+                    {isHugged && (
+                      <div className="hug-heart-burst">
+                        <div className="hug-heart-burst-inner">
+                          <Heart className="text-red-500" size={28} />
+                          <Heart className="text-pink-400" size={22} />
+                          <Heart className="text-red-500" size={28} />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                  <p className="text-sm text-pink-400">
+                    {hugCompleted
+                      ? "Thanks Mishu, yeh hug bilkul real laga 🤍"
+                      : isPressing
+                        ? "Hold rakho... Azkeel Mishu ko tight hug de raha ha 🤗"
+                        : "Screen ko dabba k rakhain (Long Press to Hug)"}
+                  </p>
+                  {hugCompleted && (
+                    <div className="space-y-3">
+                      <p className="text-base font-semibold text-pink-600">
+                        Thanks Mishu, hug mil gaya 🤗
+                      </p>
+                      <button
+                        onClick={nextStep}
+                        className="px-8 py-2 bg-pink-500 text-white rounded-full font-bold shadow-lg hover:bg-pink-600"
+                      >
+                        Next step ❤️
+                      </button>
+                    </div>
+                  )}
+                  <div
+                    onMouseDown={() => setIsPressing(true)}
+                    onMouseUp={() => setIsPressing(false)}
+                    onMouseLeave={() => setIsPressing(false)}
+                    onTouchStart={() => setIsPressing(true)}
+                    onTouchEnd={() => setIsPressing(false)}
+                    className="w-full h-24 bg-pink-50/80 rounded-3xl flex items-center justify-center cursor-pointer active:scale-95 transition transform border border-pink-200 shadow-lg shadow-pink-100/60"
+                  >
+                    <Heart
+                      className={`text-red-500 hug-heart-button ${
+                        isPressing ? "hug-heart-button-active" : ""
+                      }`}
+                      size={40}
+                    />
+                  </div>
+                </div>
+              )}
+
+              {step === 15 && (
+                <div className="space-y-8">
+                  <h2 className="text-2xl font-bold italic">
+                    Azkeel Maryam sa Kitna pyar krta ha?
+                  </h2>
+                  <div className="w-full bg-gray-200 h-8 rounded-full overflow-hidden border-2 border-pink-300">
+                    <div
+                      className="bg-gradient-to-r from-pink-400 to-red-500 h-full transition-all duration-100 flex items-center justify-end pr-2 text-white font-bold text-xs"
+                      style={{ width: `${loveProgress}%` }}
+                    >
+                      {loveProgress}%
+                    </div>
+                  </div>
+                  {loveProgress < 100 ? (
+                    <p className="text-sm text-pink-400">
+                      Screen ko dabba k rakhain... (Fill it to 100%)
+                    </p>
+                  ) : (
+                    <p className="text-2xl font-bold text-red-600 animate-bounce">
+                      INFINITE LOVE! ∞ ❤️
+                    </p>
+                  )}
+                  <div
+                    onMouseDown={() => setIsPressing(true)}
+                    onMouseUp={() => setIsPressing(false)}
+                    onMouseLeave={() => setIsPressing(false)}
+                    onTouchStart={() => setIsPressing(true)}
+                    onTouchEnd={() => setIsPressing(false)}
+                    className="w-full h-32 border-4 border-dashed border-pink-300 rounded-3xl flex items-center justify-center text-pink-300 font-bold text-xl select-none"
+                  >
+                    HOLD HERE
+                  </div>
+                </div>
+              )}
+
+              {step === 16 && (
+                <div className="space-y-8 relative">
+                  <div className="flex justify-center items-center h-32">
+                    <div
+                      className={`kiss-heart-container ${
+                        heartJoined ? "kiss-heart-active" : ""
+                      }`}
+                    >
+                      <span className="kiss-heart-icon">❤️</span>
+                      {heartJoined && (
+                        <span className="kiss-heart-text">Mishu</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex justify-center gap-12">
+                    <div
+                      className={`kiss-character ${
+                        heartJoined ? "kiss-character-boy-active" : ""
+                      }`}
+                    >
+                      <BoyCharacter />
+                    </div>
+                    <div
+                      className={`relative kiss-character ${
+                        heartJoined ? "kiss-character-girl-active" : ""
+                      }`}
+                    >
+                      <GirlCharacter />
+                      {capOn && (
+                        <CapHat
+                          className="absolute -top-8 left-1/2 drop-shadow-lg"
+                          size={48}
+                          style={{
+                            transform: "translateX(-36px) rotate(-10deg)",
+                          }}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {!heartJoined ? (
+                    <button
+                      onClick={() => setHeartJoined(true)}
+                      className="px-6 py-3 bg-red-500 text-white rounded-full font-bold shadow-lg animate-pulse"
+                    >
+                      Mishu dur ku khari ho meri jan mery pass ao 😘
+                    </button>
+                  ) : (
+                    <div className="space-y-4">
+                      <p className="text-xl font-bold text-pink-600">
+                        Mishu ap pass a dil ko sakoon mila thanks! ❤️
+                      </p>
+                      <button
+                        onClick={nextStep}
+                        className="px-8 py-2 bg-pink-500 text-white rounded-full"
+                      >
+                        Next...
+                      </button>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              {step === 17 && (
+                <div className="space-y-6">
+                  <h2 className="text-2xl font-bold text-pink-700 leading-relaxed">
+                    <Typewriter
+                      text="Bohat shukria meri Jan mery ic din ko memorable bnanay k leyah, apka birthday celebrate kr ap k sath bohat Khushi Hoi."
+                      delay={70}
+                    />
+                  </h2>
+                  <button
+                    onClick={handleOpenSurprise}
+                    className="relative inline-flex items-center justify-center gap-3 px-10 py-4 bg-gradient-to-r from-amber-500 to-red-600 text-white rounded-full shadow-lg hover:scale-105 transition-transform"
+                  >
+                    <span className="heart-surprise-icon text-2xl">❤️</span>
+                    <span className="text-xs sm:text-sm font-semibold tracking-widest uppercase">
+                      Mery Dil Ko Kholo
+                    </span>
+                  </button>
+                </div>
+              )}
+
+              {step === 18 && (
+                <div className="min-h-[360px] flex flex-col items-center justify-center py-6 space-y-6">
+                  <h2 className="text-3xl md:text-4xl font-great-vibes text-pink-300">
+                    Royal Love Story ✨
+                  </h2>
+                  {storyIndex >= 0 && (
+                    <div className="golden-quote px-6 py-6 md:px-8 md:py-8 fade-in-up overflow-hidden">
+                      <div key={storyIndex} className="golden-quote-glow" />
+                      <div className="relative z-10 space-y-4">
+                        <div className="golden-quote-label flex items-center justify-center gap-2">
+                          <Sparkles size={18} />
+                          <span>
+                            Scene {storyIndex + 1} of {storyQuotes.length}
+                          </span>
+                          <Sparkles size={18} />
+                        </div>
+                        <p className="golden-quote-text">
+                          <Typewriter
+                            key={storyIndex}
+                            text={storyQuotes[storyIndex]}
+                            delay={55}
+                          />
+                        </p>
+                        <div className="flex justify-center gap-3 text-pink-300">
+                          <Sparkles size={18} />
+                          <Sparkles size={20} />
+                          <Sparkles size={18} />
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  <div className="flex flex-col items-center gap-4">
+                    {storyIndex >= 0 && storyIndex < storyQuotes.length - 1 && (
+                      <button
+                        onClick={handleNextQuote}
+                        className="px-8 py-3 rounded-full bg-gradient-to-r from-red-600 via-amber-500 to-red-600 text-white font-semibold shadow-lg hover:scale-105 transition-transform"
+                      >
+                        Aur 🤔?✨
+                      </button>
+                    )}
+                    {showLetterIcon && (
+                      <button
+                        onClick={handleToggleLetter}
+                        className="mt-2 px-6 py-2 rounded-full bg-black/40 border border-amber-400 text-amber-100 flex items-center gap-2 shadow-lg hover:bg-black/60 transition-colors"
+                      >
+                        <span className="text-2xl">📜</span>
+                        <span className="text-sm font-semibold">
+                          Open Birthday Letter
+                        </span>
+                      </button>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            <div className="mt-8 text-pink-300 text-sm font-medium tracking-widest">
+              MADE WITH ❤️ BY AZKEEL
+            </div>
+          </div>
+        );
+      }
+
+      const rootElement = document.getElementById("root");
+      const root = ReactDOM.createRoot(rootElement);
+      root.render(<App />);
+    </script>
+  </body>
+</html>
